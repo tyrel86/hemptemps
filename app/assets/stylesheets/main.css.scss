@@ -15,13 +15,16 @@ $light_green: #DCEAB1;
 $content_margin: 10px;
 
 body {
-	font: 14px Georgia, serif;
+	font: 17px Georgia, serif;
 	@include background-image(linear-gradient(color-stops($light_green, $light_grey)));
 	h2 {
 		color: $dark_green;
 		font-size: 40px;
 		font-weight: bolder;
 		margin-bottom: $content_margin;
+		a {
+			color: $dark_green;
+		}
 		img {
 			margin-right: 3px;
 		}
@@ -48,7 +51,7 @@ form.bp {
 		#logo {
 			.logo {
 				float: left;
-				@include push_down($push_down);
+				@include push_down(7px);
 			}
 			.effect {
 				float: left;
@@ -114,7 +117,51 @@ form.bp {
 	min-height: 410px;
 	#body_content {
 		#body_content_title {
-			display: none;
+			font-size: 42px;
+			color: $dark_green;
+			margin-bottom: 20px;
+			font-weight: bolder;
+			text-decoration: underline;
+		}
+	}
+}
+.news_item_truncated {
+	margin-bottom: 20px;
+	h2 {
+		a {
+			color: $dark_green;
+			&:hover {
+				color: $dark_mid_green;
+			}
+		}
+	}
+}
+.news_item {
+	h2 {
+		a {
+			color: $dark_green;
+			&:hover {
+				color: $dark_mid_green;
+			}
+		}
+	}
+	p {
+		font-size: 14px;
+	}
+}
+
+.pagination {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 42px;
+	color: $dark_mid_green;
+	em.current {
+		color: $dark_green;
+	}
+	a {
+		color: $dark_mid_green;
+		&:hover {
+			color: $light_mid_green;
 		}
 	}
 }
@@ -123,7 +170,7 @@ footer {
 	background-image: url(/assets/footer-image.png);
 	background-repeat: repeat-x;
 	background-position: bottom;
-	position: relative;
+		position: relative;
 	height: 300px;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	#inner_footer {
