@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: refinery_database_development
+  pool: 5
+  username: tyrel
+  password: SQL_BuddhA024878
+  min_messages: warning
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: refinery_database_test
+  pool: 5
+  username: tyrel
+  password: SQL_BuddhA024878
+  min_messages: warning
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: refinery_database_production
+  pool: 5
+  username: tyrel
+  password: SQL_BuddhA024878
+  min_messages: warning
