@@ -1,0 +1,42 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset";
+@import "partials/base";
+@import "blueprint";
+@import "blueprint/scaffolding";
+@import "compass/css3";
+
+$light_grey: #FFFFFF;
+$light_green: #DCEAB1;
+$dark_green: #2A431D;
+
+body {
+	font: 14px Georgia, serif;
+	@include background-image(linear-gradient(color-stops($light_green, $light_grey)));
+}
+
+form.bp {
+  @include blueprint-form;
+  @include blueprint-scaffolding;
+}
+#header {
+	background-color: #2A431D;
+	height: 180px;
+}
+#page_container {
+	@include container;
+	min-height: 410px;
+	#body_content {
+		#body_content_title {
+			display: none;
+		}
+	}
+}
+
+footer {
+	background-image: url(/assets/footer-image.png);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	position: relative;
+	height: 300px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}

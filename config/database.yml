@@ -15,11 +15,11 @@ test:
   password: SQL_BuddhA024878
   min_messages: warning
 production:
-	adapter: postgresql
-	encoding: unicode
-	pool: 5
-	database: d9e67vmnefaieo
-	username: imystjsahqdsba
-	password: hQnpn4DOLCedfKrA8VUyMUPbdW
-	host: ec2-54-227-252-82.compute-1.amazonaws.com
-	port: 5432
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: d9e67vmnefaieo
+  username: imystjsahqdsba
+  password: hQnpn4DOLCedfKrA8VUyMUPbdW
+  host: ec2-54-227-252-82.compute-1.amazonaws.com
+  port: 5432
