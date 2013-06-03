@@ -4,10 +4,13 @@
 @import "blueprint";
 @import "blueprint/scaffolding";
 @import "compass/css3";
+@import "partials/mixins";
 
 $light_grey: #FFFFFF;
-$light_green: #DCEAB1;
 $dark_green: #2A431D;
+$dark_mid_green: #5d9440;
+$light_mid_green: #94eb65;
+$light_green: #DCEAB1;
 
 body {
 	font: 14px Georgia, serif;
@@ -18,10 +21,76 @@ form.bp {
   @include blueprint-form;
   @include blueprint-scaffolding;
 }
+
 #header {
+	position: relative;
 	background-color: #2A431D;
 	height: 180px;
+	#inner_header {
+		height: 100%;
+		@include container;
+		$push_down: 20px;
+		#logo {
+			.logo {
+				float: left;
+				@include push_down($push_down);
+			}
+			.effect {
+				float: left;
+				width: 500px;
+				@include push_down($push_down);
+			}
+		}
+		nav {
+			clear: both;
+			@include push_down($push_down);
+			height: 42px;
+			display: block;
+			ul {
+				width: 100%;
+				height: 100%;
+				list-style: none;
+				li {
+					display: inline;
+					float: left;
+					margin-right: 10px;
+					padding: 4px;
+					line-height: 20px;
+					@include push_down( 4px );
+					&.selected {
+						@include border-radius(3px, 3px);
+						background-color: white;
+						a {
+							&:hover {
+								color: $dark_mid_green;
+							}
+						}
+						.triangle {
+							@include triangle;
+							position: absolute;
+							top: 28px;
+						}
+					}
+					a {
+						font-size: 22px;
+						text-decoration: none;
+						color: $dark_mid_green;
+						&:hover {
+							color: white;
+						}
+					}
+				}
+			}
+			span#contact {
+				position: absolute;
+				right: 0px;
+				color: $light_mid_green;
+				font-size: 34px;
+			}
+		}
+	}
 }
+
 #page_container {
 	@include container;
 	min-height: 410px;

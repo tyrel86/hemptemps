@@ -6409,3 +6409,2176 @@ Served asset /refinery/logo-site-bar.png - 304 Not Modified (0ms)
 
 Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 04:12:55 -0600
 Served asset /footer-image.png - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 14:47:19 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[36mRefinery::Role Load (40.2ms)[0m  [1mSELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1[0m
+  [1m[35mRefinery::User Load (24.6ms)[0m  SELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1
+  [1m[36mEXPLAIN (0.9ms)[0m  [1mEXPLAIN SELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+EXPLAIN for: SELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1
+                                                      QUERY PLAN
+-----------------------------------------------------------------------------------------------------------------------
+ Hash Join  (cost=14.79..25.51 rows=1 width=3152)
+   Hash Cond: (refinery_roles_users.user_id = refinery_users.id)
+   ->  Bitmap Heap Scan on refinery_roles_users  (cost=4.34..15.01 rows=11 width=4)
+         Recheck Cond: (role_id = 1)
+         ->  Bitmap Index Scan on index_refinery_roles_users_on_role_id_and_user_id  (cost=0.00..4.33 rows=11 width=0)
+               Index Cond: (role_id = 1)
+   ->  Hash  (cost=10.20..10.20 rows=20 width=3152)
+         ->  Seq Scan on refinery_users  (cost=0.00..10.20 rows=20 width=3152)
+(8 rows)
+
+  [1m[35mRefinery::Page Load (12.9ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (50.2ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (31.3ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (2.0ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (700.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (923.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (4.9ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (1.7ms)
+  [1m[35mSeoMetum Load (59.2ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (5.0ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (127.4ms)
+  [1m[36mSQL (48.5ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (4.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (201.9ms)
+  Rendered refinery/_header.html.erb (214.8ms)
+  Rendered refinery/_footer.html.erb (0.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.6ms)
+Completed 200 OK in 3977ms (Views: 1539.6ms | ActiveRecord: 1810.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 14:47:25 -0600
+Served asset /application.css - 200 OK (83ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 14:47:26 -0600
+Served asset /formatting.css - 304 Not Modified (76ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 14:47:26 -0600
+Served asset /home.css - 304 Not Modified (26ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 14:47:26 -0600
+Served asset /modernizr-min.js - 304 Not Modified (36ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 14:47:26 -0600
+Served asset /application.js - 304 Not Modified (148ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 14:47:26 -0600
+Served asset /theme.css - 304 Not Modified (81ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 14:47:27 -0600
+Served asset /footer-image.png - 304 Not Modified (7ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 14:52:58 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (9.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (13.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (15.7ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (9.9ms)
+  Rendered refinery/_header.html.erb (13.9ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 72ms (Views: 61.5ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 14:52:59 -0600
+Compiled main.css  (1829ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1847ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 14:53:01 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 14:53:01 -0600
+Served asset /theme.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 14:53:01 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 14:53:01 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 14:53:01 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 14:53:01 -0600
+Served asset /hemptemp-logo.png - 200 OK (15ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 14:53:01 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 14:53:01 -0600
+Served asset /header-img-top.png - 200 OK (10ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 14:54:11 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (12.0ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (15.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (8.7ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (12.8ms)
+  Rendered refinery/_header.html.erb (17.3ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 69ms (Views: 58.4ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 14:54:12 -0600
+Compiled main.css  (1132ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1156ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 14:54:13 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 14:54:13 -0600
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 14:54:13 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 14:54:13 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 14:54:13 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 14:54:14 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 14:54:14 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 14:54:14 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 14:54:21 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.6ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (8.9ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (12.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (11.6ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (8.8ms)
+  Rendered refinery/_header.html.erb (12.2ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 64ms (Views: 54.0ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 14:54:22 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 14:54:22 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 14:54:22 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 14:54:22 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 14:54:22 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 14:54:22 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 14:54:22 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 14:54:22 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 14:55:01 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.6ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (15.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (18.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.0ms)
+  [1m[36mSQL (1.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (16.3ms)
+  Rendered refinery/_header.html.erb (20.3ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 74ms (Views: 63.0ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 14:55:02 -0600
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 14:55:02 -0600
+Served asset /formatting.css - 200 OK (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 14:55:02 -0600
+Served asset /theme.css - 200 OK (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 14:55:02 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 14:55:02 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 14:55:02 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 14:55:03 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 14:55:03 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 14:55:03 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 14:55:37 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (5.3ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (2.0ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (3.2ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (13.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (17.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.3ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (10.2ms)
+  Rendered refinery/_header.html.erb (14.0ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.5ms)
+Completed 200 OK in 94ms (Views: 73.6ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 14:55:37 -0600
+Compiled main.css  (1171ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1193ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 14:55:39 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 14:55:39 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 14:55:39 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 14:55:39 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 14:55:39 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 14:55:39 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 14:55:39 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 14:55:39 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 14:57:01 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.6ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (4.3ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (2.2ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (14.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (22.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (14.7ms)
+  [1m[36mSQL (1.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (10.7ms)
+  Rendered refinery/_header.html.erb (13.6ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 96ms (Views: 75.5ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 14:57:02 -0600
+Compiled main.css  (936ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (954ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 14:57:03 -0600
+Served asset /formatting.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 14:57:03 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 14:57:03 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 14:57:03 -0600
+Served asset /modernizr-min.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 14:57:03 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 14:57:03 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 14:57:03 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 14:57:04 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 14:58:18 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.6ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (11.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (14.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.0ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (15.9ms)
+  Rendered refinery/_header.html.erb (20.2ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.0ms)
+Completed 200 OK in 70ms (Views: 59.7ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 14:58:19 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 14:58:19 -0600
+Served asset /formatting.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 14:58:19 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 14:58:19 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 14:58:19 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 14:58:19 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 14:58:20 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 14:58:20 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:03:23 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (5.1ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.6ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (1.0ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (2.2ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (25.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (35.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (8.4ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (9.0ms)
+  Rendered refinery/_header.html.erb (12.7ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (2.7ms)
+Completed 200 OK in 101ms (Views: 78.0ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:03:23 -0600
+Error compiling asset application.css:
+Sass::SyntaxError: Invalid CSS after "...artials/mixins"": expected selector or at-rule, was "$light_grey: #F..."
+  (in /home/tyrel/code/ruby/rails/hemptemps/app/assets/stylesheets/main.css.scss)
+Served asset /application.css - 500 Internal Server Error
+
+
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:03:23 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:03:23 -0600
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:03:23 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:03:23 -0600
+Served asset /home.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:03:23 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:03:24 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:03:24 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:08:04 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (11.3ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (1.8ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.7ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.4ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (8.2ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.9ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (27.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (35.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (16.3ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (16.4ms)
+  Rendered refinery/_header.html.erb (21.0ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 134ms (Views: 93.6ms | ActiveRecord: 24.8ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:08:05 -0600
+Error compiling asset application.css:
+Sass::SyntaxError: Invalid CSS after "...artials/mixins"": expected selector or at-rule, was "$light_grey: #F..."
+  (in /home/tyrel/code/ruby/rails/hemptemps/app/assets/stylesheets/main.css.scss)
+Served asset /application.css - 500 Internal Server Error
+
+
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:08:05 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:08:05 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:08:05 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:08:05 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:08:05 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:08:05 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:08:05 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:08:22 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.8ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (5.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (1.6ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (5.7ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (3.3ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (22.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (29.9ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (5.7ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (1.1ms)
+  [1m[35mSeoMetum Load (0.6ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.4ms)
+  [1m[36mSQL (5.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (22.0ms)
+  Rendered refinery/_header.html.erb (25.1ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 121ms (Views: 88.3ms | ActiveRecord: 23.2ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:08:23 -0600
+Error compiling asset application.css:
+Sass::SyntaxError: Invalid CSS after "...artials/mixins"": expected selector or at-rule, was "$light_grey: #F..."
+  (in /home/tyrel/code/ruby/rails/hemptemps/app/assets/stylesheets/main.css.scss)
+Served asset /application.css - 500 Internal Server Error
+
+
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:08:23 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:08:23 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:08:23 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:08:23 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:08:23 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:08:23 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:08:23 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:08:59 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (3.2ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (5.6ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (5.0ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (73.0ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (77.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (10.4ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (9.2ms)
+  Rendered refinery/_header.html.erb (12.3ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 145ms (Views: 117.8ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:08:59 -0600
+Compiled main.css  (978ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (995ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:09:00 -0600
+Served asset /formatting.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:09:00 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:09:00 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:09:00 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:09:00 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:09:01 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:09:01 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:09:01 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:09:17 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (2.9ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.6ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (18.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (21.6ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (11.9ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (9.4ms)
+  Rendered refinery/_header.html.erb (12.3ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 88ms (Views: 70.3ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:09:18 -0600
+Compiled main.css  (1010ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1026ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:09:19 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:09:19 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:09:19 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:09:19 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:09:19 -0600
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:09:19 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:09:19 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:09:19 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:10:36 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (5.3ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (2.8ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (3.4ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (1.0ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (7.9ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (4.6ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (24.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (32.6ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (8.5ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (11.1ms)
+  Rendered refinery/_header.html.erb (14.1ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 149ms (Views: 114.7ms | ActiveRecord: 26.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:10:37 -0600
+Compiled main.css  (927ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (951ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:10:38 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:10:38 -0600
+Served asset /theme.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:10:38 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:10:38 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:10:38 -0600
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:10:38 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:10:38 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:10:39 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:10:46 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.4ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (9.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (15.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.9ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (9.3ms)
+  Rendered refinery/_header.html.erb (12.3ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 65ms (Views: 53.8ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:10:47 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:10:47 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:10:47 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:10:47 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:10:47 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:10:47 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:10:47 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:10:48 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:11:43 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (8.7ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (12.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (8.3ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (10.9ms)
+  Rendered refinery/_header.html.erb (14.5ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 67ms (Views: 53.7ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:11:43 -0600
+Compiled main.css  (1125ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1159ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:11:44 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:11:44 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:11:45 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:11:45 -0600
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:11:45 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:11:45 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:11:45 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:11:45 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:12:45 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (4.7ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (2.1ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (3.4ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (1.7ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.4ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (12.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (17.9ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (1.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (14.7ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (12.2ms)
+  Rendered refinery/_header.html.erb (15.1ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 92ms (Views: 71.5ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /application.css - 200 OK (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:12:46 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:12:58 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (9.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (12.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.4ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (11.3ms)
+  Rendered refinery/_header.html.erb (14.2ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 70ms (Views: 57.7ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:12:59 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:12:59 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:12:59 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:12:59 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:12:59 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:12:59 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:12:59 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:12:59 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:14:51 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (1.1ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (3.5ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.8ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (19.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (25.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (13.3ms)
+  [1m[36mSQL (1.5ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (11.6ms)
+  Rendered refinery/_header.html.erb (14.4ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 98ms (Views: 76.8ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:14:51 -0600
+Compiled main.css  (1043ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1071ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:14:52 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:14:52 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:14:52 -0600
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:14:52 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:14:53 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:14:53 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:14:53 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:14:53 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:19:32 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (4.9ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (5.6ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (1.4ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (12.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (22.6ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.7ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.1ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (10.3ms)
+  Rendered refinery/_header.html.erb (13.3ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.0ms)
+Completed 200 OK in 98ms (Views: 76.4ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:19:32 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:19:32 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:19:32 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:19:32 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:19:32 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:19:32 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:19:32 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:19:33 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:19:33 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:22:01 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.9ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (9.0ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (12.0ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (8.4ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (2.0ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (10.3ms)
+  Rendered refinery/_header.html.erb (13.2ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 68ms (Views: 56.6ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:22:02 -0600
+Compiled main.css  (1004ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1023ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:22:03 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:22:03 -0600
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:22:03 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:22:03 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:22:03 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:22:03 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:22:03 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:22:03 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:24:14 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (5.0ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (2.1ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (4.4ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (2.1ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (2.9ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (2.6ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (25.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (28.7ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (14.4ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu.html.erb (10.8ms)
+  Rendered refinery/_header.html.erb (15.6ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 109ms (Views: 77.0ms | ActiveRecord: 20.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:24:15 -0600
+Compiled main.css  (1078ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1094ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:24:16 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:24:16 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:24:16 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:24:16 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:24:16 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:24:16 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:24:17 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:24:17 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:27:43 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (17.7ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.8ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (2.6ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (1.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (10.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (18.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (6.9ms)
+  [1m[35mSeoMetum Load (1.2ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.9ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.7ms)
+  Rendered refinery/_menu.html.erb (21.1ms)
+  Rendered refinery/_header.html.erb (22.0ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.9ms)
+Completed 200 OK in 138ms (Views: 105.1ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:27:44 -0600
+Compiled main.css  (1003ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1021ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:27:45 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:27:45 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:27:45 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:27:45 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:27:45 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:27:45 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:27:45 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:27:45 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:28:43 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.8ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (1.7ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (2.7ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (2.1ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (22.9ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (25.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (5.2ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (19.1ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered refinery/_menu.html.erb (8.5ms)
+  Rendered refinery/_header.html.erb (9.5ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 90ms (Views: 64.8ms | ActiveRecord: 14.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:28:44 -0600
+Error compiling asset application.css:
+Sass::SyntaxError: Undefined variable: "$mid_light_green".
+  (in /home/tyrel/code/ruby/rails/hemptemps/app/assets/stylesheets/main.css.scss)
+Served asset /application.css - 500 Internal Server Error
+
+
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:28:45 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:28:45 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:28:45 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:28:45 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:28:45 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:28:45 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:28:45 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:29:16 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (1.1ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (6.8ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (2.0ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (2.0ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (25.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (35.7ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (2.1ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (15.1ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered refinery/_menu.html.erb (14.3ms)
+  Rendered refinery/_header.html.erb (15.2ms)
+  Rendered refinery/_footer.html.erb (1.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.7ms)
+Completed 200 OK in 121ms (Views: 89.5ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:29:16 -0600
+Compiled main.css  (1018ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1044ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:29:17 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:29:18 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:29:18 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:29:18 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:29:18 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:29:18 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:29:18 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:29:18 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:29:49 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (1.3ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (4.3ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (2.4ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (1.4ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (6.1ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.4ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (20.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (28.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (1.2ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (12.4ms)
+  [1m[36mSQL (5.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered refinery/_menu.html.erb (14.1ms)
+  Rendered refinery/_header.html.erb (16.5ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.0ms)
+Completed 200 OK in 104ms (Views: 74.4ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:29:49 -0600
+Compiled main.css  (1118ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1137ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:29:51 -0600
+Served asset /formatting.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:29:51 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:29:51 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:29:51 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:29:51 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:29:51 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:29:51 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:29:51 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:36:43 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (1.6ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (9.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (12.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (8.5ms)
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.5ms)
+  Rendered refinery/_menu.html.erb (9.5ms)
+  Rendered refinery/_header.html.erb (10.3ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 63ms (Views: 49.7ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:36:44 -0600
+Compiled main.css  (1055ms)  (pid 3065)
+Compiled application.css  (4ms)  (pid 3065)
+Served asset /application.css - 200 OK (1079ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:36:45 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:36:45 -0600
+Served asset /application.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:36:45 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:36:45 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:36:45 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:36:45 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:36:46 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:36:46 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:41:15 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (4.1ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.8ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (12.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (24.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.7ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.0ms)
+  [1m[36mSQL (1.7ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (1.9ms)
+  Rendered refinery/_menu.html.erb (10.9ms)
+  Rendered refinery/_header.html.erb (11.8ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 90ms (Views: 71.1ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:41:16 -0600
+Error compiling asset application.css:
+Sass::SyntaxError: Invalid CSS after "...radius(3px, 3px": expected ")", was ";);"
+  (in /home/tyrel/code/ruby/rails/hemptemps/app/assets/stylesheets/main.css.scss)
+Served asset /application.css - 500 Internal Server Error
+
+
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:41:16 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:41:16 -0600
+Served asset /modernizr-min.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:41:16 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:41:16 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:41:16 -0600
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:41:16 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:41:16 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:41:26 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (5.2ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.9ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (2.7ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (5.8ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (3.2ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (3.3ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (25.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (28.7ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.6ms)
+  [1m[35mSeoMetum Load (1.8ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (7.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (17.5ms)
+  [1m[36mSQL (3.2ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered refinery/_menu.html.erb (20.4ms)
+  Rendered refinery/_header.html.erb (27.6ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.1ms)
+Completed 200 OK in 144ms (Views: 102.7ms | ActiveRecord: 26.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:41:27 -0600
+Compiled main.css  (972ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (989ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:41:28 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:41:28 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:41:28 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:41:28 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:41:28 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:41:28 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:41:28 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:41:28 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:42:00 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (1.8ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (3.0ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (2.2ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (2.4ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (24.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (27.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.8ms)
+  [1m[35mSeoMetum Load (3.7ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (18.6ms)
+  [1m[36mSQL (3.8ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (1.0ms)
+  Rendered refinery/_menu.html.erb (29.3ms)
+  Rendered refinery/_header.html.erb (30.2ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 145ms (Views: 102.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:42:01 -0600
+Compiled main.css  (1160ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1211ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:42:02 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:42:02 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:42:02 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:42:02 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:42:02 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:42:03 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:42:03 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:42:03 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:43:57 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (9.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (12.6ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (8.5ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_menu_branch.html.erb (0.4ms)
+  Rendered refinery/_menu.html.erb (8.7ms)
+  Rendered refinery/_header.html.erb (11.1ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.8ms)
+Completed 200 OK in 64ms (Views: 52.6ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:43:58 -0600
+Compiled main.css  (922ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (940ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:43:59 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:43:59 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:43:59 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:43:59 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:43:59 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:43:59 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:43:59 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:43:59 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:50:47 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[35mRefinery::Role Load (0.5ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1
+  [1m[36mRefinery::User Load (0.7ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1[0m
+  [1m[35mRefinery::Page Load (0.5ms)[0m  SELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1
+  [1m[36mRefinery::Page::Translation Load (0.5ms)[0m  [1mSELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1[0m
+  [1m[35mRefinery::PagePart Load (0.5ms)[0m  SELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC
+  [1m[36mRefinery::PagePart::Translation Load (0.4ms)[0m  [1mSELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (11.4ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (15.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.5ms)
+  [1m[35mSeoMetum Load (0.5ms)[0m  SELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (9.3ms)
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC[0m
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+  Rendered refinery/_menu_branch.html.erb (4.2ms)
+  Rendered refinery/_menu.html.erb (12.8ms)
+  Rendered refinery/_header.html.erb (13.7ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (0.7ms)
+Completed 200 OK in 65ms (Views: 54.0ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:50:47 -0600
+Compiled main.css  (1280ms)  (pid 3065)
+Compiled application.css  (1ms)  (pid 3065)
+Served asset /application.css - 200 OK (1419ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:50:49 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:50:49 -0600
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:50:49 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:50:49 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:50:49 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:50:49 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:50:49 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:50:49 -0600
+Served asset /footer-image.png - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:51:07 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[36mRefinery::Role Load (1.4ms)[0m  [1mSELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1[0m
+  [1m[35mRefinery::User Load (1.4ms)[0m  SELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1
+  [1m[36mRefinery::Page Load (1.0ms)[0m  [1mSELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1[0m
+  [1m[35mRefinery::Page::Translation Load (0.7ms)[0m  SELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1
+  [1m[36mRefinery::PagePart Load (0.9ms)[0m  [1mSELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC[0m
+  [1m[35mRefinery::PagePart::Translation Load (0.7ms)[0m  SELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (557.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (616.7ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (1.7ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (7.2ms)
+  [1m[36mSeoMetum Load (2.9ms)[0m  [1mSELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (2.5ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (82.6ms)
+  [1m[35mSQL (1.6ms)[0m  SELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC
+  Rendered refinery/_menu_branch.html.erb (16389.1ms)
+  Rendered refinery/_menu.html.erb (16479.4ms)
+  Rendered refinery/_header.html.erb (16482.0ms)
+  Rendered refinery/_footer.html.erb (0.7ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (2.5ms)
+Completed 200 OK in 18002ms (Views: 17309.5ms | ActiveRecord: 224.1ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:51:26 -0600
+Served asset /application.css - 304 Not Modified (62ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:51:26 -0600
+Served asset /formatting.css - 304 Not Modified (78ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:51:26 -0600
+Served asset /application.js - 304 Not Modified (63ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:51:26 -0600
+Served asset /modernizr-min.js - 304 Not Modified (75ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:51:26 -0600
+Served asset /home.css - 304 Not Modified (41ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:51:27 -0600
+Served asset /theme.css - 304 Not Modified (21ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:51:27 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (8ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:51:27 -0600
+Served asset /header-img-top.png - 304 Not Modified (38ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:52:19 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[36mRefinery::Role Load (0.5ms)[0m  [1mSELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1[0m
+  [1m[35mRefinery::User Load (0.8ms)[0m  SELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1
+  [1m[36mRefinery::Page Load (0.7ms)[0m  [1mSELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1[0m
+  [1m[35mRefinery::Page::Translation Load (0.6ms)[0m  SELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1
+  [1m[36mRefinery::PagePart Load (0.6ms)[0m  [1mSELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC[0m
+  [1m[35mRefinery::PagePart::Translation Load (0.6ms)[0m  SELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (21.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (25.9ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.8ms)
+  [1m[36mSeoMetum Load (0.6ms)[0m  [1mSELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (18.6ms)
+  [1m[35mSQL (1.9ms)[0m  SELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC
+  Rendered refinery/_menu_branch.html.erb (2.3ms)
+  Rendered refinery/_menu.html.erb (18.3ms)
+  Rendered refinery/_header.html.erb (20.2ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.5ms)
+Completed 200 OK in 118ms (Views: 95.8ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:52:20 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:52:20 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:52:20 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:52:20 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:52:20 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:52:20 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:52:20 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:52:21 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 15:57:27 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[36mRefinery::Role Load (0.5ms)[0m  [1mSELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1[0m
+  [1m[35mRefinery::User Load (0.8ms)[0m  SELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1
+  [1m[36mRefinery::Page Load (1.9ms)[0m  [1mSELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1[0m
+  [1m[35mRefinery::Page::Translation Load (0.5ms)[0m  SELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1
+  [1m[36mRefinery::PagePart Load (0.6ms)[0m  [1mSELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC[0m
+  [1m[35mRefinery::PagePart::Translation Load (0.5ms)[0m  SELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (19.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (23.6ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.3ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (0.8ms)
+  [1m[36mSeoMetum Load (0.6ms)[0m  [1mSELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.2ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (19.6ms)
+  [1m[35mSQL (1.2ms)[0m  SELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC
+  Rendered refinery/_menu_branch.html.erb (0.8ms)
+  Rendered refinery/_menu.html.erb (13.2ms)
+  Rendered refinery/_header.html.erb (15.1ms)
+  Rendered refinery/_footer.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (1.4ms)
+Completed 200 OK in 111ms (Views: 91.0ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 15:57:28 -0600
+Compiled main.css  (3313ms)  (pid 2248)
+Compiled application.css  (7ms)  (pid 2248)
+Served asset /application.css - 200 OK (3354ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 15:57:32 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 15:57:32 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 15:57:32 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 15:57:32 -0600
+Compiled mics.js  (751ms)  (pid 2248)
+Compiled application.js  (816ms)  (pid 2248)
+Served asset /application.js - 200 OK (955ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 15:57:33 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 15:57:33 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 15:57:33 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/footer-image.png" for 127.0.0.1 at 2013-06-03 15:57:33 -0600
+Served asset /footer-image.png - 304 Not Modified (18ms)
