@@ -12,9 +12,23 @@ $dark_mid_green: #5d9440;
 $light_mid_green: #94eb65;
 $light_green: #DCEAB1;
 
+$content_margin: 10px;
+
 body {
 	font: 14px Georgia, serif;
 	@include background-image(linear-gradient(color-stops($light_green, $light_grey)));
+	h2 {
+		color: $dark_green;
+		font-size: 40px;
+		font-weight: bolder;
+		margin-bottom: $content_margin;
+		img {
+			margin-right: 3px;
+		}
+	}
+	p {
+		margin-bottom: $content_margin;
+	}
 }
 
 form.bp {
@@ -26,6 +40,7 @@ form.bp {
 	position: relative;
 	background-color: #2A431D;
 	height: 180px;
+	margin-bottom: 20px;
 	#inner_header {
 		height: 100%;
 		@include container;
@@ -55,14 +70,15 @@ form.bp {
 					float: left;
 					margin-right: 10px;
 					padding: 4px;
-					line-height: 20px;
+					line-height: 18px;
 					@include push_down( 4px );
 					&.selected {
 						@include border-radius(3px, 3px);
 						background-color: white;
 						a {
+							color: $dark_green;
 							&:hover {
-								color: $dark_mid_green;
+								color: $dark_green;
 							}
 						}
 						.triangle {
@@ -75,6 +91,8 @@ form.bp {
 						font-size: 22px;
 						text-decoration: none;
 						color: $dark_mid_green;
+						@include push_down(1px);
+						font-weight: bolder;
 						&:hover {
 							color: white;
 						}
@@ -108,4 +126,25 @@ footer {
 	position: relative;
 	height: 300px;
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	#inner_footer {
+		@include container;
+		position: relative;
+		top: 170px;
+		text-align: center;
+		.social {
+			a {
+				margin-right: 20px;
+				img {
+					opacity: 0.5;
+					transition: opacity .5s ease-in-out;
+					-moz-transition: opacity .5s ease-in-out;
+					-webkit-transition: opacity .5s ease-in-out;
+
+					&:hover {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
 }
