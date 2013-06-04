@@ -6,7 +6,7 @@
 @import "compass/css3";
 @import "partials/mixins";
 
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
 
 $light_grey: #FFFFFF;
 $dark_green: #2A431D;
@@ -17,7 +17,7 @@ $light_green: #DCEAB1;
 $content_margin: 10px;
 
 body {
-	font-family: 'Noto Sans', sans-serif;
+	font-family: 'PT Sans', sans-serif;
 	@include background-image(linear-gradient(color-stops($light_green, $light_grey)));
 	a {
     color: $dark_green;

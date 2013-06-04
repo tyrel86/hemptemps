@@ -2,6 +2,13 @@
 <%= render '/refinery/html_tag' %>
   <% site_bar = render('/refinery/site_bar', :head => true) -%>
   <%= render '/refinery/head' %>
+	<% unless params[:controller] == "refinery/news/items" and params[:action] == "show" %>
+		<style type="text/css">
+			#body_content_title {
+				display: none;
+			}
+		</style>
+	<% end %>
   <body>
     <%= site_bar -%>
     <%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
