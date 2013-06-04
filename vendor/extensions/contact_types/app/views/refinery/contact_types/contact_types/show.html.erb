@@ -1,0 +1,33 @@
+<% content_for :body_content_title do %>
+  <%= @contact_type.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @contact_type.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Inputs</h1>
+    <p>
+      <%=raw @contact_type.inputs %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="contact_types">
+      <% @contact_types.each do |contact_type| %>
+        <li>
+          <%= link_to contact_type.name, refinery.contact_types_contact_type_path(contact_type) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

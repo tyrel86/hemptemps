@@ -1,0 +1,53 @@
+/* line 1, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+#menu {
+  border: 0;
+}
+
+/* line 5, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+#page_parts, #page-tabs {
+  border: 0;
+}
+/* line 7, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+#page_parts a, #page_parts > li, #page_parts .page_part, #page-tabs a, #page-tabs > li, #page-tabs .page_part {
+  border: 0;
+  color: black;
+}
+/* line 11, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+#page_parts > li, #page_parts > ul, #page-tabs > li, #page-tabs > ul {
+  background: none;
+}
+
+/* css for timepicker */
+/* line 17, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px;
+}
+
+/* line 18, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+.ui-timepicker-div dl {
+  text-align: left;
+}
+
+/* line 19, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+.ui-timepicker-div dl dt {
+  height: 25px;
+  margin-bottom: -25px;
+}
+
+/* line 20, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+.ui-timepicker-div dl dd {
+  margin: 0 10px 10px 65px;
+}
+
+/* line 21, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+.ui-timepicker-div td {
+  font-size: 90%;
+}
+
+/* line 22, ../../../../../../../.rvm/gems/ruby-1.9.3-p374@rails-3/gems/refinerycms-calendar-2.0.4/vendor/assets/stylesheets/refinery/calendar.css.scss */
+.ui-tpicker-grid-label {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}

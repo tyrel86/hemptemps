@@ -1,0 +1,28 @@
+nb:
+  refinery:
+    plugins:
+      contact_types:
+        title: Contact Types
+    contact_types:
+      admin:
+        contact_types:
+          actions:
+            create_new: Lag en ny Contact Type
+            reorder: Endre rekkefølgen på Contact Types
+            reorder_done: Ferdig å endre rekkefølgen Contact Types
+          records:
+            title: Contact Types
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Contact Types enda. Klikk på "Lag en ny Contact Type" for å legge til din første contact type.
+          contact_type:
+            view_live_html: Vis hvordan denne contact type ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne contact type
+            delete: Fjern denne contact type permanent
+      contact_types:
+        show:
+          other: Andre Contact Types
+  activerecord:
+    attributes:
+      'refinery/contact_types/contact_type':
+        name: Name
+        inputs: Inputs

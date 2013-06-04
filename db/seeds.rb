@@ -13,4 +13,10 @@
 # Refinery::News::Engine.load_seed
 
 # Added by Refinery CMS Inquiries engine
-Refinery::Inquiries::Engine.load_seed
+# Refinery::Inquiries::Engine.load_seed
+
+# Added by Refinery CMS Contact Types extension
+# Refinery::ContactTypes::Engine.load_seed
+
+# Added by Refinery CMS Venues extension
+Refinery::Calendar::Engine.load_seed

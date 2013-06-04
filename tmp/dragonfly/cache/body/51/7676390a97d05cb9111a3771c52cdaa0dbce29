@@ -1,0 +1,14 @@
+(function() {
+  jQuery(function() {
+    var datetimes;
+
+    return datetimes = $(".datetime_range").datetimepicker({
+      ampm: true,
+      dateFormat: 'M d, yy',
+      changeMonth: true,
+      changeYear: true,
+      numberOfMonths: 2
+    });
+  });
+
+}).call(this);

@@ -1,0 +1,29 @@
+es:
+  refinery:
+    plugins:
+      contact_types:
+        title: Contact Types
+#        article: masculino/femenino
+    contact_types:
+      admin:
+        contact_types:
+          actions:
+            create_new: Crear nuevo contact type
+            reorder: Reordenar contact types
+            reorder_done: Reordenación de contact types completada
+          records:
+            title: Contact Types
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay contact types todavía. Pulsa en "Crear nuevo Contact Type" para crear tu primer contact type.
+          contact_type:
+            view_live_html: Ver este contact type como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este contact type
+            delete: Borrar este contact type para siempre
+      contact_types:
+        show:
+          other: Otros contact types
+  activerecord:
+    attributes:
+      'refinery/contact_types/contact_type':
+        name: Name
+        inputs: Inputs

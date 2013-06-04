@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'pg'
+gem 'activerecord-postgres-hstore'
 gem 'fog'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -41,6 +42,9 @@ gem 'refinerycms', '~> 2.0.0', :git => 'git://github.com/refinery/refinerycms.gi
 gem 'refinerycms-i18n', '~> 2.0.0'
 gem "refinerycms-news", '~> 2.0.0'
 gem 'refinerycms-inquiries', '~> 2.0.0'
-gem 'refinerycms-page-images', '~> 2.0.0'
+# gem 'refinerycms-page-images', '~> 2.0.0'
+gem 'refinerycms-calendar', '~>2.0.0'
+gem 'refinerycms-contact_types', :path => 'vendor/extensions'
 # gem 'refinerycms-blog', '~> 2.0.0'
 #  gem 'refinerycms-search', '~> 2.0.0'
+

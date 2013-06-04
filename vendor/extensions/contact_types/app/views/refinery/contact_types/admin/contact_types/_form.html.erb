@@ -1,0 +1,20 @@
+<%= form_for [refinery, :contact_types_admin, @contact_type] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @contact_type,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :inputs -%>
+    <%= f.text_field :inputs -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.contact_types.admin.contact_types.contact_type'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @contact_type.name) -%>
+<% end -%>

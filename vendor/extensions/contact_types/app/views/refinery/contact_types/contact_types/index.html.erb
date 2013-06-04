@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="contact_types">
+    <% @contact_types.each do |contact_type| %>
+      <li>
+        <%= link_to contact_type.name, refinery.contact_types_contact_type_path(contact_type) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>
