@@ -17,6 +17,12 @@ $content_margin: 10px;
 body {
 	font: 17px Georgia, serif;
 	@include background-image(linear-gradient(color-stops($light_green, $light_grey)));
+	a {
+    color: $dark_green;
+		&:hover {
+			color: $dark_mid_green;
+		}
+	}
 	h2 {
 		color: $dark_green;
 		font-size: 40px;
