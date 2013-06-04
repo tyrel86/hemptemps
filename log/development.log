@@ -28163,3 +28163,86 @@ Served asset /facebook-icon.png - 304 Not Modified (0ms)
 
 Started GET "/assets/twitter-icon.png" for 127.0.0.1 at 2013-06-03 23:38:23 -0600
 Served asset /twitter-icon.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-06-03 23:51:34 -0600
+Processing by Refinery::PagesController#home as HTML
+  Parameters: {"locale"=>:en}
+  [1m[36mRefinery::Role Load (0.5ms)[0m  [1mSELECT "refinery_roles".* FROM "refinery_roles" WHERE "refinery_roles"."title" = 'Refinery' LIMIT 1[0m
+  [1m[35mRefinery::User Load (5.1ms)[0m  SELECT "refinery_users".* FROM "refinery_users" INNER JOIN "refinery_roles_users" ON "refinery_users"."id" = "refinery_roles_users"."user_id" WHERE "refinery_roles_users"."role_id" = 1
+  [1m[36mRefinery::Page Load (0.5ms)[0m  [1mSELECT "refinery_pages".* FROM "refinery_pages" WHERE "refinery_pages"."link_url" = '/' LIMIT 1[0m
+  [1m[35mRefinery::Page::Translation Load (6.0ms)[0m  SELECT "refinery_page_translations".* FROM "refinery_page_translations" WHERE "refinery_page_translations"."refinery_page_id" = 1
+  [1m[36mRefinery::PagePart Load (0.5ms)[0m  [1mSELECT "refinery_page_parts".* FROM "refinery_page_parts" WHERE "refinery_page_parts"."refinery_page_id" = 1 ORDER BY position ASC[0m
+  [1m[35mRefinery::PagePart::Translation Load (0.5ms)[0m  SELECT "refinery_page_part_translations".* FROM "refinery_page_part_translations" WHERE "refinery_page_part_translations"."refinery_page_part_id" IN (1)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_content_page.html.erb (17.8ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/pages/app/views/refinery/pages/home.html.erb within layouts/application (22.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_html_tag.html.erb (0.1ms)
+  [1m[36mRefinery::User Load (4.6ms)[0m  [1mSELECT "refinery_users".* FROM "refinery_users" WHERE "refinery_users"."id" = 1 LIMIT 1[0m
+  [1m[35mRefinery::Role Load (4.8ms)[0m  SELECT "refinery_roles".* FROM "refinery_roles" INNER JOIN "refinery_roles_users" ON "refinery_roles"."id" = "refinery_roles_users"."role_id" WHERE "refinery_roles_users"."user_id" = 1
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_site_bar.html.erb (15.1ms)
+  [1m[36mSeoMetum Load (2.2ms)[0m  [1mSELECT "seo_meta".* FROM "seo_meta" WHERE "seo_meta"."seo_meta_type" = 'Refinery::Page::Translation' AND "seo_meta"."seo_meta_id" = 1 LIMIT 1[0m
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_google_analytics.html.erb (0.1ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_head.html.erb (21.3ms)
+  [1m[35mSQL (2.0ms)[0m  SELECT "refinery_pages"."id" AS t0_r0, "refinery_pages"."parent_id" AS t0_r1, "refinery_pages"."path" AS t0_r2, "refinery_pages"."slug" AS t0_r3, "refinery_pages"."show_in_menu" AS t0_r4, "refinery_pages"."link_url" AS t0_r5, "refinery_pages"."menu_match" AS t0_r6, "refinery_pages"."deletable" AS t0_r7, "refinery_pages"."draft" AS t0_r8, "refinery_pages"."skip_to_first_child" AS t0_r9, "refinery_pages"."lft" AS t0_r10, "refinery_pages"."rgt" AS t0_r11, "refinery_pages"."depth" AS t0_r12, "refinery_pages"."view_template" AS t0_r13, "refinery_pages"."layout_template" AS t0_r14, "refinery_pages"."created_at" AS t0_r15, "refinery_pages"."updated_at" AS t0_r16, "refinery_page_translations"."id" AS t1_r0, "refinery_page_translations"."refinery_page_id" AS t1_r1, "refinery_page_translations"."locale" AS t1_r2, "refinery_page_translations"."title" AS t1_r3, "refinery_page_translations"."custom_slug" AS t1_r4, "refinery_page_translations"."menu_title" AS t1_r5, "refinery_page_translations"."slug" AS t1_r6, "refinery_page_translations"."created_at" AS t1_r7, "refinery_page_translations"."updated_at" AS t1_r8 FROM "refinery_pages" INNER JOIN "refinery_page_translations" ON "refinery_page_translations"."refinery_page_id" = "refinery_pages"."id" WHERE "refinery_pages"."draft" = 'f' AND "refinery_pages"."show_in_menu" = 't' AND "refinery_page_translations"."locale" = 'en' ORDER BY lft ASC
+  Rendered refinery/_menu_branch.html.erb (0.8ms)
+  Rendered refinery/_menu.html.erb (18.7ms)
+  Rendered refinery/_header.html.erb (19.8ms)
+  Rendered shared/_animated_form_links.html.erb (0.1ms)
+  Rendered refinery/_footer.html.erb (0.6ms)
+  Rendered /home/tyrel/.rvm/gems/ruby-1.9.3-p374@rails-3/bundler/gems/refinerycms-3e2c8ec2924a/core/app/views/refinery/_javascripts.html.erb (2.0ms)
+Completed 200 OK in 136ms (Views: 103.4ms | ActiveRecord: 26.6ms)
+
+
+Started GET "/assets/application.css" for 127.0.0.1 at 2013-06-03 23:51:34 -0600
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/formatting.css" for 127.0.0.1 at 2013-06-03 23:51:34 -0600
+Served asset /formatting.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/theme.css" for 127.0.0.1 at 2013-06-03 23:51:34 -0600
+Served asset /theme.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/refinery/site_bar.css" for 127.0.0.1 at 2013-06-03 23:51:34 -0600
+Served asset /refinery/site_bar.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.css" for 127.0.0.1 at 2013-06-03 23:51:34 -0600
+Served asset /home.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2013-06-03 23:51:34 -0600
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/modernizr-min.js" for 127.0.0.1 at 2013-06-03 23:51:35 -0600
+Served asset /modernizr-min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/refinery/logo-site-bar.png" for 127.0.0.1 at 2013-06-03 23:51:35 -0600
+Served asset /refinery/logo-site-bar.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/hemptemp-logo.png" for 127.0.0.1 at 2013-06-03 23:51:35 -0600
+Served asset /hemptemp-logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter-icon.png" for 127.0.0.1 at 2013-06-03 23:51:35 -0600
+Served asset /twitter-icon.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/youtube-icon.png" for 127.0.0.1 at 2013-06-03 23:51:35 -0600
+Served asset /youtube-icon.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/header-img-top.png" for 127.0.0.1 at 2013-06-03 23:51:35 -0600
+Served asset /header-img-top.png - 304 Not Modified (0ms)
+
+
+Started GET "/system/images/W1siZiIsIjIwMTMvMDYvMDMvMTZfMTBfMTZfMzQwX2J1bGxldF9wb2ludC5wbmciXSxbInAiLCJ0aHVtYiIsIjExMHgxMTA%2BIl1d/bullet-point.png" for 127.0.0.1 at 2013-06-03 23:51:35 -0600
+
+
+Started GET "/assets/facebook-icon.png" for 127.0.0.1 at 2013-06-03 23:51:35 -0600
+Served asset /facebook-icon.png - 304 Not Modified (0ms)
