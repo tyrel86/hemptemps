@@ -37960,3 +37960,4 @@ Served asset /facebook-icon.png - 304 Not Modified (0ms)
 
 Started GET "/assets/twitter-icon.png" for 127.0.0.1 at 2013-06-04 03:48:23 -0600
 Served asset /twitter-icon.png - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
