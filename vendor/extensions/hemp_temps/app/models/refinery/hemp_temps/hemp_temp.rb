@@ -13,6 +13,7 @@ module Refinery
       # We have validated the first string field for you.
       validates :name, :presence => true
       validates :phone, :presence => true
+			validates :badged, acceptance: { accept: true }
 
       JOB_TYPES = ["Bud Tender", "Grower", "Reception/Front Desk", "Trimming"]
     end
