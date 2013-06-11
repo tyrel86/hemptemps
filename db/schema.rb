@@ -11,14 +11,122 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130604065314) do
+ActiveRecord::Schema.define(:version => 20130611013456) do
+
+  create_table "refinery_calendar_events", :force => true do |t|
+    t.string   "title"
+    t.date     "from"
+    t.date     "to"
+    t.string   "registration_link"
+    t.string   "excerpt"
+    t.text     "description"
+    t.integer  "position"
+    t.boolean  "featured"
+    t.string   "slug"
+    t.integer  "venue_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "refinery_calendar_venues", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "url"
+    t.string   "phone"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "refinery_contact_types", :force => true do |t|
     t.string   "name"
     t.integer  "position"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.hstore   "inputs"
   end
+
+  create_table "refinery_employees", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address"
+    t.boolean  "badged"
+    t.boolean  "license_number"
+    t.date     "exp_date"
+    t.integer  "position"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "refinery_employer_inquiries", :force => true do |t|
+    t.string   "company_name"
+    t.string   "contact_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "grow_facility_address"
+    t.string   "website"
+    t.integer  "positions_to_fill"
+    t.string   "job_types"
+    t.text     "other_job_types"
+    t.boolean  "any_chemicals"
+    t.boolean  "tools"
+    t.text     "help_with_tools"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.boolean  "safe"
+  end
+
+  add_index "refinery_employer_inquiries", ["id"], :name => "index_refinery_employer_inquiries_on_id"
+
+  create_table "refinery_hemp_temps", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "address"
+    t.boolean  "badged"
+    t.string   "license_number"
+    t.date     "exp_date"
+    t.string   "job_type"
+    t.boolean  "bud_tender_experience"
+    t.integer  "bud_tender_years"
+    t.boolean  "bud_tender_strains"
+    t.boolean  "bud_tender_edibles"
+    t.boolean  "bud_tender_extracts"
+    t.boolean  "bud_tender_clones"
+    t.boolean  "bud_tender_register"
+    t.boolean  "bud_tender_ailments"
+    t.boolean  "grower_experience"
+    t.integer  "grower_years"
+    t.boolean  "grower_fifty_pounds"
+    t.string   "grower_hydro_orgainics"
+    t.string   "grower_organics"
+    t.string   "grower_lighting"
+    t.text     "grower_enjoyment"
+    t.text     "grower_nutrient_lines"
+    t.text     "grower_methods"
+    t.text     "grower_largest_grow_room"
+    t.text     "grower_media"
+    t.boolean  "grower_environmental_controll"
+    t.text     "grower_environmental_brands"
+    t.boolean  "reception_experience"
+    t.text     "reception_software"
+    t.boolean  "reception_badged"
+    t.text     "reception_work_history"
+    t.boolean  "trimmer_experience"
+    t.integer  "trimmer_years"
+    t.integer  "trimmer_grams_per_day"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "budtender_salse"
+    t.integer  "budtender_salse_years"
+    t.boolean  "bud_tender_sales"
+    t.integer  "budtender_sales_years"
+    t.boolean  "trimmer_harvesting_experience"
+    t.integer  "trimmer_harvesting_years"
+  end
+
+  add_index "refinery_hemp_temps", ["id"], :name => "index_refinery_hemp_temps_on_id"
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"
