@@ -1,0 +1,434 @@
+<div id='records'>
+  <h2><%= t('.hemp_temp') %></h2>
+  <table id='hemp_temp' class='inquiry'>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.name', :default => t('activerecord.attributes.hemp_temp.name')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @hemp_temp.name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.phone', :default => t('activerecord.attributes.hemp_temp.phone')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @hemp_temp.phone %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.email', :default => t('activerecord.attributes.hemp_temp.email')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @hemp_temp.email %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.address', :default => t('activerecord.attributes.hemp_temp.address')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @hemp_temp.address %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.badged', :default => t('activerecord.attributes.hemp_temp.badged')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @hemp_temp.badged %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.license_number', :default => t('activerecord.attributes.hemp_temp.license_number')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @hemp_temp.license_number %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.exp_date', :default => t('activerecord.attributes.hemp_temp.exp_date')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @hemp_temp.exp_date %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.job_type', :default => t('activerecord.attributes.hemp_temp.job_type')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @hemp_temp.job_type %>
+        </td>
+      </tr>
+			<% if @hemp_temp.job_type == "Bud Tender" %>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.bud_tender_experience', :default => t('activerecord.attributes.hemp_temp.bud_tender_experience')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.bud_tender_experience %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.bud_tender_years', :default => t('activerecord.attributes.hemp_temp.bud_tender_years')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.bud_tender_years %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.bud_tender_strains', :default => t('activerecord.attributes.hemp_temp.bud_tender_strains')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.bud_tender_strains %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.bud_tender_edibles', :default => t('activerecord.attributes.hemp_temp.bud_tender_edibles')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.bud_tender_edibles %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.bud_tender_extracts', :default => t('activerecord.attributes.hemp_temp.bud_tender_extracts')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.bud_tender_extracts %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.bud_tender_clones', :default => t('activerecord.attributes.hemp_temp.bud_tender_clones')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.bud_tender_clones %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.bud_tender_register', :default => t('activerecord.attributes.hemp_temp.bud_tender_register')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.bud_tender_register %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.bud_tender_ailments', :default => t('activerecord.attributes.hemp_temp.bud_tender_ailments')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.bud_tender_ailments %>
+					</td>
+				</tr>
+			<% end %>
+			<% if @hemp_temp.job_type == "Grower" %>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.grower_experience', :default => t('activerecord.attributes.hemp_temp.grower_experience')) %>
+						</strong>
+					</td>
+        <td>
+          <%= @hemp_temp.grower_experience %>
+        </td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.grower_years', :default => t('activerecord.attributes.hemp_temp.grower_years')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.grower_years %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.grower_fifty_pounds', :default => t('activerecord.attributes.hemp_temp.grower_fifty_pounds')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.grower_fifty_pounds %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.grower_hydro_orgainics', :default => t('activerecord.attributes.hemp_temp.grower_hydro_orgainics')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.grower_hydro_orgainics %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.grower_organics', :default => t('activerecord.attributes.hemp_temp.grower_organics')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.grower_organics %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.grower_lighting', :default => t('activerecord.attributes.hemp_temp.grower_lighting')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.grower_lighting %>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top'>
+						<strong>
+							<%= t('.grower_enjoyment', :default => t('activerecord.attributes.hemp_temp.grower_enjoyment')) %>
+						</strong>
+					</td>
+					<td>
+						<p style='margin-top: 0px'>
+							<% @hemp_temp.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+								<%=raw "</p><p>" unless index == 0 %>
+								<%= sentence %>
+							<% end %>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top'>
+						<strong>
+							<%= t('.grower_nutrient_lines', :default => t('activerecord.attributes.hemp_temp.grower_nutrient_lines')) %>
+						</strong>
+					</td>
+					<td>
+						<p style='margin-top: 0px'>
+							<% @hemp_temp.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+								<%=raw "</p><p>" unless index == 0 %>
+								<%= sentence %>
+							<% end %>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top'>
+						<strong>
+							<%= t('.grower_methods', :default => t('activerecord.attributes.hemp_temp.grower_methods')) %>
+						</strong>
+					</td>
+					<td>
+						<p style='margin-top: 0px'>
+							<% @hemp_temp.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+								<%=raw "</p><p>" unless index == 0 %>
+								<%= sentence %>
+							<% end %>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top'>
+						<strong>
+							<%= t('.grower_largest_grow_room', :default => t('activerecord.attributes.hemp_temp.grower_largest_grow_room')) %>
+						</strong>
+					</td>
+					<td>
+						<p style='margin-top: 0px'>
+							<% @hemp_temp.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+								<%=raw "</p><p>" unless index == 0 %>
+								<%= sentence %>
+							<% end %>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top'>
+						<strong>
+							<%= t('.grower_media', :default => t('activerecord.attributes.hemp_temp.grower_media')) %>
+						</strong>
+					</td>
+					<td>
+						<p style='margin-top: 0px'>
+							<% @hemp_temp.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+								<%=raw "</p><p>" unless index == 0 %>
+								<%= sentence %>
+							<% end %>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.grower_environmental_controll', :default => t('activerecord.attributes.hemp_temp.grower_environmental_controll')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.grower_environmental_controll %>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top'>
+						<strong>
+							<%= t('.grower_environmental_brands', :default => t('activerecord.attributes.hemp_temp.grower_environmental_brands')) %>
+						</strong>
+					</td>
+					<td>
+						<p style='margin-top: 0px'>
+							<% @hemp_temp.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+								<%=raw "</p><p>" unless index == 0 %>
+								<%= sentence %>
+							<% end %>
+						</p>
+					</td>
+				</tr>
+			<% end %>
+			<% if @hemp_temp.job_type == "Reception/Front Desk" %>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.reception_experience', :default => t('activerecord.attributes.hemp_temp.reception_experience')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.reception_experience %>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top'>
+						<strong>
+							<%= t('.reception_software', :default => t('activerecord.attributes.hemp_temp.reception_software')) %>
+						</strong>
+					</td>
+					<td>
+						<p style='margin-top: 0px'>
+							<% @hemp_temp.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+								<%=raw "</p><p>" unless index == 0 %>
+								<%= sentence %>
+							<% end %>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.reception_badged', :default => t('activerecord.attributes.hemp_temp.reception_badged')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.reception_badged %>
+					</td>
+				</tr>
+				<tr>
+					<td valign='top'>
+						<strong>
+							<%= t('.reception_work_history', :default => t('activerecord.attributes.hemp_temp.reception_work_history')) %>
+						</strong>
+					</td>
+					<td>
+						<p style='margin-top: 0px'>
+							<% @hemp_temp.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+								<%=raw "</p><p>" unless index == 0 %>
+								<%= sentence %>
+							<% end %>
+						</p>
+					</td>
+				</tr>
+			<% end %>
+			<% if @hemp_temp.job_type == "Trimming" %>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.trimmer_experience', :default => t('activerecord.attributes.hemp_temp.trimmer_experience')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.trimmer_experience %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.trimmer_years', :default => t('activerecord.attributes.hemp_temp.trimmer_years')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.trimmer_years %>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>
+							<%= t('.trimmer_grams_per_day', :default => t('activerecord.attributes.hemp_temp.trimmer_grams_per_day')) %>
+						</strong>
+					</td>
+					<td>
+						<%= @hemp_temp.trimmer_grams_per_day %>
+					</td>
+				</tr>
+			<% end %>
+  </table>
+</div>
+<div id='actions'>
+  <h2><%= t('.details')%></h2>
+  <p>
+    <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@hemp_temp.created_at) %>
+  </p>
+  <h2><%= t('.actions') %></h2>
+  <ul>
+    <li>
+      <%= link_to t('.back_to_all_hemp_temps'), refinery.url_for(:action => 'index'),
+                   :class => "back_icon" %>
+    </li>
+    <li>
+      <%= link_to t('delete', :scope => 'refinery.hemp_temps.admin.hemp_temps'),
+                  refinery.hemp_temps_admin_hemp_temp_path(@hemp_temp),
+                  :class => 'delete_icon no-tooltip confirm-delete',
+                  :title => t('delete', :scope => 'refinery.hemp_temps.admin.hemp_temps'),
+                  :'data-confirm' => t('message', :scope => 'refinery.admin.delete', :title => @hemp_temp.name),
+                  :'data-method' => "delete" %>
+    </li>
+  </ul>
+</div>

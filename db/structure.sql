@@ -151,6 +151,159 @@ ALTER SEQUENCE refinery_contact_types_id_seq OWNED BY refinery_contact_types.id;
 
 
 --
+-- Name: refinery_employees; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE refinery_employees (
+    id integer NOT NULL,
+    name character varying(255),
+    phone character varying(255),
+    email character varying(255),
+    address character varying(255),
+    badged boolean,
+    license_number boolean,
+    exp_date date,
+    "position" integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: refinery_employees_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE refinery_employees_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: refinery_employees_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE refinery_employees_id_seq OWNED BY refinery_employees.id;
+
+
+--
+-- Name: refinery_employer_inquiries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE refinery_employer_inquiries (
+    id integer NOT NULL,
+    company_name character varying(255),
+    contact_name character varying(255),
+    phone character varying(255),
+    email character varying(255),
+    grow_facility_address character varying(255),
+    website character varying(255),
+    positions_to_fill integer,
+    job_types character varying(255),
+    other_job_types text,
+    any_chemicals boolean,
+    tools boolean,
+    help_with_tools text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    safe boolean
+);
+
+
+--
+-- Name: refinery_employer_inquiries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE refinery_employer_inquiries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: refinery_employer_inquiries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE refinery_employer_inquiries_id_seq OWNED BY refinery_employer_inquiries.id;
+
+
+--
+-- Name: refinery_hemp_temps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE refinery_hemp_temps (
+    id integer NOT NULL,
+    name character varying(255),
+    phone character varying(255),
+    email character varying(255),
+    address character varying(255),
+    badged boolean,
+    license_number character varying(255),
+    exp_date date,
+    job_type character varying(255),
+    bud_tender_experience boolean,
+    bud_tender_years integer,
+    bud_tender_strains boolean,
+    bud_tender_edibles boolean,
+    bud_tender_extracts boolean,
+    bud_tender_clones boolean,
+    bud_tender_register boolean,
+    bud_tender_ailments boolean,
+    grower_experience boolean,
+    grower_years integer,
+    grower_fifty_pounds boolean,
+    grower_hydro_orgainics character varying(255),
+    grower_organics character varying(255),
+    grower_lighting character varying(255),
+    grower_enjoyment text,
+    grower_nutrient_lines text,
+    grower_methods text,
+    grower_largest_grow_room text,
+    grower_media text,
+    grower_environmental_controll boolean,
+    grower_environmental_brands text,
+    reception_experience boolean,
+    reception_software text,
+    reception_badged boolean,
+    reception_work_history text,
+    trimmer_experience boolean,
+    trimmer_years integer,
+    trimmer_grams_per_day integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    budtender_salse boolean,
+    budtender_salse_years integer,
+    bud_tender_sales boolean,
+    budtender_sales_years integer,
+    trimmer_harvesting_experience boolean,
+    trimmer_harvesting_years integer
+);
+
+
+--
+-- Name: refinery_hemp_temps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE refinery_hemp_temps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: refinery_hemp_temps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE refinery_hemp_temps_id_seq OWNED BY refinery_hemp_temps.id;
+
+
+--
 -- Name: refinery_images; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -692,6 +845,27 @@ ALTER TABLE ONLY refinery_contact_types ALTER COLUMN id SET DEFAULT nextval('ref
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY refinery_employees ALTER COLUMN id SET DEFAULT nextval('refinery_employees_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY refinery_employer_inquiries ALTER COLUMN id SET DEFAULT nextval('refinery_employer_inquiries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY refinery_hemp_temps ALTER COLUMN id SET DEFAULT nextval('refinery_hemp_temps_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY refinery_images ALTER COLUMN id SET DEFAULT nextval('refinery_images_id_seq'::regclass);
 
 
@@ -811,6 +985,30 @@ ALTER TABLE ONLY refinery_contact_types
 
 
 --
+-- Name: refinery_employees_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY refinery_employees
+    ADD CONSTRAINT refinery_employees_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: refinery_employer_inquiries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY refinery_employer_inquiries
+    ADD CONSTRAINT refinery_employer_inquiries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: refinery_hemp_temps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY refinery_hemp_temps
+    ADD CONSTRAINT refinery_hemp_temps_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: refinery_images_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -920,6 +1118,20 @@ ALTER TABLE ONLY refinery_users
 
 ALTER TABLE ONLY seo_meta
     ADD CONSTRAINT seo_meta_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_refinery_employer_inquiries_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_refinery_employer_inquiries_on_id ON refinery_employer_inquiries USING btree (id);
+
+
+--
+-- Name: index_refinery_hemp_temps_on_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_refinery_hemp_temps_on_id ON refinery_hemp_temps USING btree (id);
 
 
 --
@@ -1135,3 +1347,19 @@ INSERT INTO schema_migrations (version) VALUES ('20130604073654');
 INSERT INTO schema_migrations (version) VALUES ('20130604075553');
 
 INSERT INTO schema_migrations (version) VALUES ('20130604075554');
+
+INSERT INTO schema_migrations (version) VALUES ('20130607034756');
+
+INSERT INTO schema_migrations (version) VALUES ('20130610104134');
+
+INSERT INTO schema_migrations (version) VALUES ('20130610191221');
+
+INSERT INTO schema_migrations (version) VALUES ('20130610201958');
+
+INSERT INTO schema_migrations (version) VALUES ('20130610211646');
+
+INSERT INTO schema_migrations (version) VALUES ('20130611004545');
+
+INSERT INTO schema_migrations (version) VALUES ('20130611005317');
+
+INSERT INTO schema_migrations (version) VALUES ('20130611013456');

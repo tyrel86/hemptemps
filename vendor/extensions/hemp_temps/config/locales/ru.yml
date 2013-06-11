@@ -1,0 +1,110 @@
+ru:
+  refinery:
+    plugins:
+      hemp_temps:
+        title: Hemp Temps
+    hemp_temps:
+      hemp_temps:
+        new:
+          header_message: "Упс. Возникла небольшая проблемка."
+          message: "Нужно исправить следующие ошибки:"
+          send: "Отправить сообщение"
+          privacy_policy: "Мы относимся с уважением к вашим личным данным"
+      admin:
+        hemp_temps:
+          hemp_temp:
+            move_hemp_temp_to_closed: "Переместить этот запрос в закрытые"
+            move_hemp_temp_to_open: "Переместить этот запрос в открытые"
+            read_hemp_temp: "Прочитать запрос"
+            remove_hemp_temp: "Вы уверены, что хотите удалить запрос от '%{name}'?"
+            title: Hemp Temps
+            said: "пишет"
+            mark_as_spam: "Пометить как спам"
+            mark_as_ham: "Переместить во Входящие"
+          toggle_status:
+            closed: "Запрос '%{hemp_temp}' закрыт"
+            reopened: "Запрос '%{hemp_temp}' открыт заново"
+          submenu:
+            inbox: "Входящие"
+            spam: "Спам"
+            update_notified: Изменить получателей уведомлений
+            edit_confirmation_email: "Редактировать письмо-подтверждение"
+          index:
+            no_hemp_temps: "Вы еще не получили ни одного запроса."
+          spam:
+            no_spam: "Ура! Вы не получили спам."
+          show:
+            details: "Подробности"
+            click_to_email: "Нажмите, чтобы отправить"
+            status: "Статус"
+            open: "Открыт"
+            closed: "Закрыт"
+            age: "Срок"
+            actions: "Действия"
+            back_to_all_hemp_temps: "Назад ко всем запросам"
+            spam: "Спам"
+            spam_yes: 'да'
+            hemp_temp: Hemp Temp
+            title: Hemp Temps
+        settings:
+          update:
+            updated: "'%{setting}' были успешно обновлены."
+          notification_recipients_form:
+            settings_value_name: "Отправить уведомления"
+            explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет уведомление на электронную почту."
+            hint: "Когда поступит новый запрос, Refinery CMS отправит вам уведомление на электронную почту."
+            example: "Введите адрес(а) электронной почты через запятую: anna@mail.ru, ivanov@yandex.ru"
+          confirmation_email_form:
+            to: "Кому"
+            from: "От"
+            subject: "Тема сообщения"
+            click_to_edit_subject: "Редактировать тему сообщения"
+            explanation: "Каждый раз, когда кто-то связывается с вами посредством вашего сайта, Refinery CMS отправляет ему письмо, подтверждающее принятие запроса."
+            below_edit_email_sent: Ниже вы можете отредактировать отсылаемое письмо
+            the_customer_making_hemp_temp: "Клиент, делающий запрос"
+            message: "Сообщение"
+            note: "Примечание: поместите текст %name% там, где вы хотите, чтобы появилось имя клиента."
+          subject_form:
+            subject_value_name: "Тема сообщения"
+  activerecord:
+    models:
+      hemp_temp: Hemp Temp
+      setting: "Настройки запроса"
+    attributes:
+      hemp_temp:
+        name: Name
+        phone: Phone
+        email: Email
+        address: Address
+        badged: Badged
+        license_number: License number
+        exp_date: Exp date
+        job_type: Job type
+        bud_tender_experience: Bud tender experience
+        bud_tender_years: Bud tender years
+        bud_tender_strains: Bud tender strains
+        bud_tender_edibles: Bud tender edibles
+        bud_tender_extracts: Bud tender extracts
+        bud_tender_clones: Bud tender clones
+        bud_tender_register: Bud tender register
+        bud_tender_ailments: Bud tender ailments
+        grower_experience: Grower experience
+        grower_years: Grower years
+        grower_fifty_pounds: Grower fifty pounds
+        grower_hydro_orgainics: Grower hydro orgainics
+        grower_organics: Grower organics
+        grower_lighting: Grower lighting
+        grower_enjoyment: Grower enjoyment
+        grower_nutrient_lines: Grower nutrient lines
+        grower_methods: Grower methods
+        grower_largest_grow_room: Grower largest grow room
+        grower_media: Grower media
+        grower_environmental_controll: Grower environmental controll
+        grower_environmental_brands: Grower environmental brands
+        reception_experience: Reception experience
+        reception_software: Reception software
+        reception_badged: Reception badged
+        reception_work_history: Reception work history
+        trimmer_experience: Trimmer experience
+        trimmer_years: Trimmer years
+        trimmer_grams_per_day: Trimmer grams per day

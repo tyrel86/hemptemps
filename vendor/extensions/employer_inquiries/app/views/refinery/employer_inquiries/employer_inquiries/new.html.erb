@@ -1,0 +1,88 @@
+<% content_for :body do %>
+  <div class='employer_inquiries'>
+    <%=raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) %>
+
+    <%= form_for [refinery, :employer_inquiries, @employer_inquiry] do |f| %>
+			<div class="header">Employer Registration<div class="icon"></div></div>
+      <%= render '/refinery/admin/error_messages',
+                 :object => @employer_inquiry,
+                 :include_object_name => true  %>
+
+      <div class='field company_name_field string_field'>
+        <%= f.label :company_name %>
+        <%= f.text_field :company_name %>
+      </div>
+
+      <div class='field contact_name_field string_field'>
+        <%= f.required_label :contact_name %>
+        <%= f.text_field :contact_name %>
+      </div>
+
+      <div class='field phone_field string_field'>
+        <%= f.required_label "Best Phone Number to Contact You" %>
+        <%= f.text_field :phone %>
+      </div>
+
+      <div class='field email_field string_field'>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+
+      <div class='field grow_facility_address_field string_field'>
+        <%= f.label :grow_facility_address %>
+        <%= f.text_field :grow_facility_address %>
+      </div>
+
+      <div class='field website_field string_field'>
+        <%= f.label :website %>
+        <%= f.text_field :website %>
+      </div>
+
+      <div class='field positions_to_fill_field integer_field'>
+        <%= f.label "How many positions are you looking to fill?" %>
+				<%= f.number_field :positions_to_fill %>
+      </div>
+
+      <div class='field job_types_field checkbox_field'>
+        <%= f.label "What type of positions are you looking to fill?" %>
+				<% job_type_array = ["Bud Tender", "Grower", "Trimmer", "Receptionist", "General Labor"] %>
+				<% job_type_array.each do |job_type| %>
+					<div class="multi_select">
+						<%= check_box_tag "employer_inquiry[job_types][]", job_type %>
+						<%= job_type %>
+					</div>
+				<% end %>
+      </div>
+
+      <div class='field other_job_types_field text_field'>
+        <%= f.label "If other, please list below" %>
+        <%= f.text_area :other_job_types, :rows => 8 %>
+      </div>
+
+      <div class='field safe select_field'>
+        <%= f.label "Do you have a safe environment to work in?" %>
+        <%= f.select :safe, {yes: true, no: false}, {:include_blank => true} %>
+      </div>
+
+      <div class='field any_chemicals_field boolean_field'>
+        <%= f.label "Would there be any chemicals involved that are not run of the mill nutrients?" %>
+        <%= f.select :any_chemicals, {yes: true, no: false}, {:include_blank => true} %>
+      </div>
+
+      <div class='field tools_field boolean_field'>
+        <%= f.label "Do you have all of the tools necessary tools in order to complete the task?" %>
+        <%= f.select :tools, {yes: true, no: false}, {:include_blank => true} %>
+      </div>
+
+      <div class='field help_with_tools_field text_field'>
+        <label>If not, we can help. Please explain what tools you need to complete your task</label>
+        <%= f.text_area :help_with_tools, :rows => 8 %>
+      </div>
+
+      <div class='actions'>
+        <%= f.submit "Send" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<%= render '/refinery/content_page' %>

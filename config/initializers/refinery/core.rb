@@ -50,10 +50,10 @@ Refinery::Core.configure do |config|
   # Register extra stylesheet for backend (optional options)
   # config.register_stylesheet "custom", :media => 'screen'
 end
-# Refinery::Core.configure do |config|
-#   config.s3_backend = true
-#   config.s3_access_key_id = ''
-#   config.s3_secret_access_key = 'fill_in_your_secret_key_here'
-#   config.s3_bucket_name = 'fill_in_your_bucket_name_here'
-#   config.s3_region = 'fill_in_your_buckets_region_here' # this one's not always required, default is 'us-east-1'
-# end
+Refinery::Core.configure do |config|
+  config.s3_backend = true
+  config.s3_access_key_id = 'AKIAI3YBYLFD7KBVVZOQ'
+  config.s3_secret_access_key = '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'
+  config.s3_bucket_name = 'hemptemps'
+  config.s3_region = 'Oregon' # this one's not always required, default is 'us-east-1'
+end

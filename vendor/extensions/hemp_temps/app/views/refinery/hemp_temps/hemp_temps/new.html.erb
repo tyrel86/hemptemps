@@ -1,0 +1,231 @@
+<% content_for :body do %>
+  <div class='hemp_temps'>
+    <%=raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) %>
+
+    <%= form_for [refinery, :hemp_temps, @hemp_temp] do |f| %>
+			<div class="header">HempTemps Application</div>
+      <%= render '/refinery/admin/error_messages',
+                 :object => @hemp_temp,
+                 :include_object_name => true  %>
+
+      <div class='field name_field string_field'>
+        <%= f.required_label "Name (Last Name, First Name, MI)" %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class='field phone_field string_field'>
+        <%= f.required_label :phone %>
+        <%= f.text_field :phone %>
+      </div>
+
+      <div class='field email_field string_field'>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+
+      <div class='field address_field string_field'>
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+      </div>
+
+      <div class='field badged_field boolean_field'>
+        <%= f.label "Are you badged?" %>
+					<%= f.select :badged, {"Yes" => true, "No" => false}, {:include_blank => true} %>
+      </div>
+
+      <div class='field license_number_field string_field'>
+        <%= f.label "If so what is your license number?" %>
+        <%= f.text_field :license_number %>
+      </div>
+
+      <div class='field exp_date_field date_field'>
+        <%= f.label "Badge Exp Date" %>
+        <%= f.date_select :exp_date %>
+      </div>
+
+      <div class='field job_type_field radio_field'>
+        <div class="header" style="margin-top:42px;">What are you applying for?</div>
+        <% Refinery::HempTemps::HempTemp::JOB_TYPES.each do |value, name| %>
+          <%= f.radio_button :job_type, (name || value), :value => value %>
+          <%= f.label :"job_type_#{(name || value)}", value.humanize %>
+        <% end %>
+      </div>
+
+			<br><hr>
+
+			<div class="section" id="hemp_temp_job_type_bud_tender">
+				<div class='field bud_tender_experience_field boolean_field'>
+					<%= f.label "Do you have budtending experience" %>
+					<%= f.select :bud_tender_experience, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field bud_tender_years_field integer_field'>
+					<%= f.label "If so how many years" %>
+					<%= f.number_field :bud_tender_years %>
+				</div>
+
+				<div class='field bud_tender_experience_field boolean_field'>
+					<%= f.label "Do you have sales experience?" %>
+					<%= f.select :bud_tender_sales, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field bud_tender_years_field integer_field'>
+					<%= f.label "If so how many years" %>
+					<%= f.number_field :budtender_sales_years %>
+				</div>
+
+				<div class='field bud_tender_strains_field boolean_field'>
+					<%= f.label "Are you familiar with strains?" %>
+					<%= f.select :bud_tender_strains, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field bud_tender_edibles_field boolean_field'>
+					<%= f.label "Are you familiar with edibles?" %>
+					<%= f.select :bud_tender_edibles, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field bud_tender_extracts_field boolean_field'>
+					<%= f.label "Are you familiar with extracts" %>
+					<%= f.select :bud_tender_extracts, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field bud_tender_clones_field boolean_field'>
+					<%= f.label "Do you have clone experience?" %>
+					<%= f.select :bud_tender_clones, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field bud_tender_register_field boolean_field'>
+					<%= f.label "Do you have register experience?" %>
+					<%= f.select :bud_tender_register, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field bud_tender_ailments_field boolean_field'>
+					<%= f.label "Have you helped patients select stratins based on ailments?" %>
+					<%= f.select :bud_tender_ailments, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+			</div>
+
+			<div class="section" id="hemp_temp_job_type_grower">
+				<div class='field grower_experience_field boolean_field'>
+					<%= f.label "Do you have grower experience?" %>
+					<%= f.select :grower_experience, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field grower_years_field integer_field'>
+					<%= f.label "If so how many years?" %>
+					<%= f.select :grower_years, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field grower_fifty_pounds_field boolean_field'>
+					<%= f.label "Can you lift 50 lbs without assistance?" %>
+					<%= f.select :grower_fifty_pounds, {yes: true, no: false}, {:include_blank => true} %>
+				</div>
+
+				<% experience_levels = ["Novice", "Intermediate", "Expert", "Master"] %>
+
+				<div class='field grower_hydro_orgainics_field string_field'>
+					<%= f.label "How would you rate your experience in hydro orgainics?" %>
+					<%= f.select :grower_hydro_orgainics, experience_levels, {:include_blank => true} %>
+				</div>
+
+				<div class='field grower_organics_field string_field'>
+					<%= f.label :grower_organics %>
+					<%= f.select :grower_organics, experience_levels, {:include_blank => true} %>
+				</div>
+
+				<div class='field grower_lighting_field string_field'>
+					<%= f.label :grower_lighting %>
+					<%= f.select :grower_lighting, experience_levels, {:include_blank => true} %>
+				</div>
+
+				<div class='field grower_enjoyment_field text_field'>
+					<%= f.label "A brief summary of why you enjoy growing." %>
+					<%= f.text_area :grower_enjoyment, :rows => 8 %>
+				</div>
+
+				<div class='field grower_nutrient_lines_field text_field'>
+					<%= f.label "List the nutrient lines you are familiar with." %>
+					<%= f.text_area :grower_nutrient_lines, :rows => 8 %>
+				</div>
+
+				<div class='field grower_methods_field text_field'>
+					<%= f.label "List the methods of growing you have practiced." %>
+					<%= f.text_area :grower_methods, :rows => 8 %>
+				</div>
+
+				<div class='field grower_largest_grow_room_field text_field'>
+					<%= f.label "Largest grow room you have worked in (please include how many lights)." %>
+					<%= f.text_area :grower_largest_grow_room, :rows => 8 %>
+				</div>
+
+				<div class='field grower_media_field text_field'>
+					<%= f.label "List the media you have used." %>
+					<%= f.text_area :grower_media, :rows => 8 %>
+				</div>
+
+				<div class='field grower_environmental_controll_field boolean_field'>
+					<%= f.label "Are you familiar with environmental control?" %>
+					<%= f.select :grower_environmental_controll, {"Yes" => true, "No" => false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field grower_environmental_brands_field text_field'>
+					<%= f.label "If yes, what brands are you familiar with?" %>
+					<%= f.text_area :grower_environmental_brands, :rows => 8 %>
+				</div>
+			</div>
+
+			<div class="section" id="hemp_temp_job_type_receptionfront_desk">
+				<div class='field reception_experience_field boolean_field'>
+					<%= f.label "Do you have experience as a receptionist" %>
+					<%= f.select :reception_experience, {"Yes" => true, "No" => false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field reception_software_field text_field'>
+					<%= f.label "What software do you know?" %>
+					<%= f.text_area :reception_software, :rows => 8 %>
+				</div>
+
+				<div class='field reception_badged_field boolean_field'>
+					<%= f.label "Do you have badge experience?" %>
+					<%= f.select :reception_badged, {"Yes" => true, "No" => false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field reception_work_history_field text_field'>
+					<%= f.label "What places have you worked?" %>
+					<%= f.text_area :reception_work_history, :rows => 8 %>
+				</div>
+			</div>
+
+			<div class="section" id="hemp_temp_job_type_trimming">
+				<div class='field trimmer_experience_field boolean_field'>
+					<%= f.label "Do you have harvesting experience?" %>
+					<%= f.select :trimmer_harvesting_experience, {"Yes" => true, "No" => false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field trimmer_years_field integer_field'>
+					<%= f.label "If so how many years?" %>
+					<%= f.number_field :trimmer_harvesting_years %>
+				</div>
+
+				<div class='field trimmer_experience_field boolean_field'>
+					<%= f.label "Do you have trimming experience?" %>
+					<%= f.select :trimmer_experience, {"Yes" => true, "No" => false}, {:include_blank => true} %>
+				</div>
+
+				<div class='field trimmer_years_field integer_field'>
+					<%= f.label "If so how many years?" %>
+					<%= f.number_field :trimmer_years %>
+				</div>
+
+				<div class='field trimmer_grams_per_day_field integer_field'>
+					<%= f.label "How many grams can you produce in eight hours?" %>
+					<%= f.number_field :trimmer_grams_per_day %>
+				</div>
+			</div>
+      <div class='actions'>
+        <%= f.submit :send %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<%= render '/refinery/content_page' %>

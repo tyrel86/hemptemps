@@ -1,0 +1,27 @@
+<%= t('.greeting') %>,<br/>
+<br/>
+<%= t('.you_recieved_new_employer_inquiry') %><br/>
+<br/>
+<%= t('.employer_inquiry_starts') %><br/>
+<br/>
+<%= t('.company_name', :default => t('activerecord.attributes.employer_inquiry.company_name')) %>: <%= @employer_inquiry.company_name %><br/>
+<%= t('.contact_name', :default => t('activerecord.attributes.employer_inquiry.contact_name')) %>: <%= @employer_inquiry.contact_name %><br/>
+<%= t('.phone', :default => t('activerecord.attributes.employer_inquiry.phone')) %>: <%= @employer_inquiry.phone %><br/>
+<%= t('.email', :default => t('activerecord.attributes.employer_inquiry.email')) %>: <%= @employer_inquiry.email %><br/>
+<%= t('.grow_facility_address', :default => t('activerecord.attributes.employer_inquiry.grow_facility_address')) %>: <%= @employer_inquiry.grow_facility_address %><br/>
+<%= t('.website', :default => t('activerecord.attributes.employer_inquiry.website')) %>: <%= @employer_inquiry.website %><br/>
+<%= t('.positions_to_fill', :default => t('activerecord.attributes.employer_inquiry.positions_to_fill')) %>: <%= @employer_inquiry.positions_to_fill %><br/>
+<%= t('.job_types', :default => t('activerecord.attributes.employer_inquiry.job_types')) %>: <%= @employer_inquiry.job_types %><br/>
+<%= t('.other_job_types', :default => t('activerecord.attributes.employer_inquiry.other_job_types')) %>: 
+<%= @employer_inquiry.other_job_types %>
+<%= t('.any_chemicals', :default => t('activerecord.attributes.employer_inquiry.any_chemicals')) %>: <%= @employer_inquiry.any_chemicals %><br/>
+<%= t('.tools', :default => t('activerecord.attributes.employer_inquiry.tools')) %>: <%= @employer_inquiry.tools %><br/>
+<%= t('.help_with_tools', :default => t('activerecord.attributes.employer_inquiry.help_with_tools')) %>: 
+<%= @employer_inquiry.help_with_tools %>
+<br/>
+<%= t('.employer_inquiry_ends') %><br/>
+<br/>
+<%= t('.closing_line') %>,<br/>
+<%= Refinery::Core.site_name %><br/>
+<br/>
+<%= t('.ps_html') %>

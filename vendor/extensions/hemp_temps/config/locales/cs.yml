@@ -1,0 +1,111 @@
+cs:
+  refinery:
+    plugins:
+      hemp_temps:
+        title: Hemp Temps
+        description: Poskytuje kontaktní formulář a zaznamenáva hemp temps
+    hemp_temps:
+      hemp_temps:
+        new:
+          send: Odeslat zprávu
+          privacy_policy: Chráníme vaše soukromí
+      admin:
+        hemp_temps:
+          delete: Trvale odstranit hemp temp
+          hemp_temp:
+            read_hemp_temp: Přečíst hemp temp
+            said: řekl
+            mark_as_spam: Označit jako spam
+            mark_as_ham: Označit jako přečtené
+          submenu:
+            inbox: Inbox
+            spam: Spam
+            update_notified: Upravit seznam notifikovaných
+            edit_confirmation_email: Upravit potvrzovací e-mail
+          index:
+            no_hemp_temps: Zatím jste neobdrželi žádné hemp temps.
+          spam:
+            no_spam: Hurá! Nemáte žádný spam.
+          show:
+            details: Podrobnosti
+            age: Věk
+            actions: Akce
+            back_to_all_hemp_temps: Zpět na všechny hemp temps
+            spam: Spam
+            spam_yes: 'ano'
+            hemp_temp: Hemp Temp
+            to: Komu
+            from: Od
+            click_to_email: Klikněte pro odeslání této adresy e-mailem
+            phone: Telefon
+            date: Datum
+            message: Zpráva
+        settings:
+          notification_recipients_form:
+            settings_value_name: Zaslat upozornění pro
+            explanation: Pokaždé, když Vás někdo kontaktuje přes vaše webové stránky, Refinery odešle e-mail s upozorněním na nový hemp temp.
+            hint: Když je odeslán nový hemp temp, Refinery pošle upozornení na Váš e-mail.
+            example: "Zadejte e-mailové adresy jako: jack@work.com, jill@office.com"
+          confirmation_email_form:
+            to: Komu
+            from: Od
+            subject: Předmet
+            click_to_edit_subject: Klikněte zde pro editaci předmetu
+            explanation: Když Vás někdo kontaktuje přes vaše webové stránky, Refinery odešle e-mail s potvrzením o přijetí odesílateli hemp temp.
+            below_edit_email_sent: Níže můžete upravit e-mail, který je odeslán.
+            the_customer_making_hemp_temp: Klient delá hemp temp
+            message: Zpráva
+            note: "Poznámka: umístěte text %name%, pro určení pozice jména klienta v e-maile"
+      mailer:
+        notification:
+          greeting: Hi there
+          you_recieved_new_hemp_temp: You just received a new hemp temp on your website.
+          hemp_temp_starts: --- hemp temp starts ---
+          hemp_temp_ends: --- hemp temp ends ---
+          from: Od
+          email: E-mail
+          phone: Telefon
+          message: Zpráva
+          closing_line: S pozdravem
+          ps_html: P.S. Všechny vaše hemp temps jsou uloženy pod záložkou "Hemp Temps" v Refinery, pokud by jste je chtěli zobrazit pozdeji.
+  activerecord:
+    models:
+      hemp_temp: Hemp Temp
+    attributes:
+      hemp_temp:
+        name: Name
+        phone: Phone
+        email: Email
+        address: Address
+        badged: Badged
+        license_number: License number
+        exp_date: Exp date
+        job_type: Job type
+        bud_tender_experience: Bud tender experience
+        bud_tender_years: Bud tender years
+        bud_tender_strains: Bud tender strains
+        bud_tender_edibles: Bud tender edibles
+        bud_tender_extracts: Bud tender extracts
+        bud_tender_clones: Bud tender clones
+        bud_tender_register: Bud tender register
+        bud_tender_ailments: Bud tender ailments
+        grower_experience: Grower experience
+        grower_years: Grower years
+        grower_fifty_pounds: Grower fifty pounds
+        grower_hydro_orgainics: Grower hydro orgainics
+        grower_organics: Grower organics
+        grower_lighting: Grower lighting
+        grower_enjoyment: Grower enjoyment
+        grower_nutrient_lines: Grower nutrient lines
+        grower_methods: Grower methods
+        grower_largest_grow_room: Grower largest grow room
+        grower_media: Grower media
+        grower_environmental_controll: Grower environmental controll
+        grower_environmental_brands: Grower environmental brands
+        reception_experience: Reception experience
+        reception_software: Reception software
+        reception_badged: Reception badged
+        reception_work_history: Reception work history
+        trimmer_experience: Trimmer experience
+        trimmer_years: Trimmer years
+        trimmer_grams_per_day: Trimmer grams per day

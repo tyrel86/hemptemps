@@ -1,0 +1,16 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%= link_to hemp_temp.name, refinery.hemp_temps_admin_hemp_temp_path(hemp_temp) %> <%= t('.said') %>
+    <span class="preview"><%= truncate(strip_tags(sanitize(hemp_temp.message)), :length => 60) -%></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('delete.png'), refinery.hemp_temps_admin_hemp_temp_path(hemp_temp),
+                :class => "cancel confirm-delete",
+                :title => t('admin.hemp_temps.delete'),
+                :'data-confirm' => t('shared.admin.delete.message', :title => hemp_temp.name),
+                :'data-method' => "delete" -%>
+
+    <%= link_to refinery_icon_tag('zoom.png'), refinery.hemp_temps_admin_hemp_temp_path(hemp_temp),
+                :title => t('.read_hemp_temp') -%>
+  </span>
+</li>

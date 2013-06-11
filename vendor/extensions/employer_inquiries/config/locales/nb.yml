@@ -1,0 +1,84 @@
+nb:
+  refinery:
+    plugins:
+      employer_inquiries:
+        title: Employer Inquiries
+    employer_inquiries:
+      employer_inquiries:
+        new:
+          header_message: "Ooops, det oppsto et lite problem"
+          message: "Følgende problemer må løses:"
+          send: Send melding
+          privacy_policy: "Vi respekterer ditt privatliv"
+      admin:
+        employer_inquiries:
+          employer_inquiry:
+            move_employer_inquiry_to_closed: Flytt denne forespørselen til lukket
+            move_employer_inquiry_to_open: Flytt denne forespørselen til åpen
+            read_employer_inquiry: Les forespørselen
+            remove_employer_inquiry: "Er du sikker på at du ønsker å slette denne forespørselen fra '%{name}'?"
+            title: Employer Inquiries
+            said: sa
+            mark_as_spam: Merk som søppel
+            mark_as_ham: Flytt til innboksen
+          toggle_status:
+            closed: "Forespørselen '%{employer_inquiry}' er lukket"
+            reopened: "Forespørselen '%{employer_inquiry}' er gjenåpnet"
+          submenu:
+            update_notified: Oppdater hvem som blir informert
+            edit_confirmation_email: Rediger bekreftelses e-posten
+          index:
+            no_employer_inquiries: Du har ikke mottatt noen forespørsler enda.
+          spam:
+            no_spam: Hurra! Du har ikke noen søppelpost.
+          show:
+            details: Detaljer
+            click_to_email: Trykk for å sende e-post
+            status: Status
+            open: Åpen
+            closed: Lukket
+            age: Alder
+            actions: Handlinger
+            back_to_all_employer_inquiries: Tilbake til alle forespørslene
+            spam: Søppel
+            spam_yes: 'ja'
+            employer_inquiry: Employer Inquiry
+            title: Employer Inquiries
+        settings:
+          update:
+            updated: "'%{setting}' ble endret."
+          notification_recipients_form:
+            settings_value_name: Send oppdateringer til
+            explanation: "Hver gang noen kontakter deg på websiden din, så vil Refinery sende ut en e-post for å si ifra at det er ny forespørsel."
+            hint: "Når en ny forespørsel er lagt inn, så vil Refinery sende deg en e-post for å si i fra."
+            example: "Legg inn din(e) e-post adresse(r) slik: jack@jobb.no, jill@kontoret.no"
+          confirmation_email_form:
+            to: Til
+            from: Fra
+            subject: Emne
+            click_to_edit_subject: Trykk her for å redigere emnet
+            explanation: "Hver gang noen sender inn en forespørsel gjennom din webside, så sender Refinery en e-post til personen som la inn forespørselen for å bekrefte at forespørselen er mottatt."
+            below_edit_email_sent: Du kan redigere e-posten som blir sendt ut nedenfor.
+            the_customer_making_employer_inquiry: Kunden som skrev forespørselen
+            message: Melding
+            note: "Merk: plasser teksten %name% der du ønsker at kundens navn skal vises i e-posten"
+          subject_form:
+            subject_value_name: Enme
+  activerecord:
+    models:
+      employer_inquiry: Employer Inquiry
+      setting: Innstillinger for Forespørsler
+    attributes:
+      employer_inquiry:
+        company_name: Company name
+        contact_name: Contact name
+        phone: Phone
+        email: Email
+        grow_facility_address: Grow facility address
+        website: Website
+        positions_to_fill: Positions to fill
+        job_types: Job types
+        other_job_types: Other job types
+        any_chemicals: Any chemicals
+        tools: Tools
+        help_with_tools: Help with tools

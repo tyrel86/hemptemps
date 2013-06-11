@@ -1,0 +1,111 @@
+en:
+  refinery:
+    plugins:
+      hemp_temps:
+        title: Hemp Temps
+        description: Provides a contact form and stores hemp temps
+    hemp_temps:
+      hemp_temps:
+        new:
+          send: Send message
+          privacy_policy: We value your privacy
+      admin:
+        hemp_temps:
+          delete: Remove this hemp temp forever
+          hemp_temp:
+            read_hemp_temp: Read the hemp temp
+            said: said
+            mark_as_spam: Mark as spam
+            mark_as_ham: Move to inbox
+          submenu:
+            inbox: Inbox
+            spam: Spam
+            update_notified: Update who gets notified
+            edit_confirmation_email: Edit confirmation email
+          index:
+            no_hemp_temps: You have not received any hemp temps yet.
+          spam:
+            no_spam: Hooray! You don't have any spam.
+          show:
+            details: Details
+            age: Age
+            actions: Actions
+            back_to_all_hemp_temps: Back to all hemp temps
+            spam: Spam
+            spam_yes: 'yes'
+            hemp_temp: Hemp Temp
+            to: To
+            from: From
+            click_to_email: Click to email this address
+            phone: Phone
+            date: Date
+            message: Message
+        settings:
+          notification_recipients_form:
+            settings_value_name: Send notifications to
+            explanation: Every time someone contacts you on your website, Refinery sends out an email to say there is a new hemp temp.
+            hint: When a new hemp temp is submitted, Refinery will send an email notification to you.
+            example: "Enter your email address(es) like: jack@work.com, jill@office.com"
+          confirmation_email_form:
+            to: To
+            from: From
+            subject: Subject
+            click_to_edit_subject: Click here to edit the subject
+            explanation: Every time someone contacts you on your website, Refinery sends out an email to confirm the hemp temp with the person who made it.
+            below_edit_email_sent: Below you can edit the email that is sent out.
+            the_customer_making_hemp_temp: The customer making the hemp temp
+            message: Message
+            note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
+      mailer:
+        notification:
+          greeting: Hi there
+          you_recieved_new_hemp_temp: You just received a new hemp temp on your website.
+          hemp_temp_starts: --- hemp temp starts ---
+          hemp_temp_ends: --- hemp temp ends ---
+          from: From
+          email: Email
+          phone: Phone
+          message: Message
+          closing_line: Kind Regards
+          ps_html: P.S. All your hemp temps are stored in the "Hemp Temps" section of Refinery should you ever want to view it later there.
+  activerecord:
+    models:
+      hemp_temp: Hemp Temp
+    attributes:
+      hemp_temp:
+        name: Name
+        phone: Phone
+        email: Email
+        address: Address
+        badged: Badged
+        license_number: License number
+        exp_date: Exp date
+        job_type: Job type
+        bud_tender_experience: Bud tender experience
+        bud_tender_years: Bud tender years
+        bud_tender_strains: Bud tender strains
+        bud_tender_edibles: Bud tender edibles
+        bud_tender_extracts: Bud tender extracts
+        bud_tender_clones: Bud tender clones
+        bud_tender_register: Bud tender register
+        bud_tender_ailments: Bud tender ailments
+        grower_experience: Grower experience
+        grower_years: Grower years
+        grower_fifty_pounds: Grower fifty pounds
+        grower_hydro_orgainics: Grower hydro orgainics
+        grower_organics: Grower organics
+        grower_lighting: Grower lighting
+        grower_enjoyment: Grower enjoyment
+        grower_nutrient_lines: Grower nutrient lines
+        grower_methods: Grower methods
+        grower_largest_grow_room: Grower largest grow room
+        grower_media: Grower media
+        grower_environmental_controll: Grower environmental controll
+        grower_environmental_brands: Grower environmental brands
+        reception_experience: Reception experience
+        reception_software: Reception software
+        reception_badged: Reception badged
+        reception_work_history: Reception work history
+        trimmer_experience: Trimmer experience
+        trimmer_years: Trimmer years
+        trimmer_grams_per_day: Trimmer grams per day

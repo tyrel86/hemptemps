@@ -20,3 +20,13 @@
 
 # Added by Refinery CMS Venues extension
 Refinery::Calendar::Engine.load_seed
+
+# Added by Refinery CMS Employees extension
+Refinery::Employees::Engine.load_seed
+
+# Added by Refinery CMS Employers extension
+Refinery::Inquiries::Engine.load_seed
+
+Refinery::EmployerInquiries::Engine.load_seed
+
+Refinery::HempTemps::Engine.load_seed

@@ -1,0 +1,87 @@
+cs:
+  refinery:
+    plugins:
+      employer_inquiries:
+        title: Employer Inquiries
+        description: Poskytuje kontaktní formulář a zaznamenáva employer inquiries
+    employer_inquiries:
+      employer_inquiries:
+        new:
+          send: Odeslat zprávu
+          privacy_policy: Chráníme vaše soukromí
+      admin:
+        employer_inquiries:
+          delete: Trvale odstranit employer inquiry
+          employer_inquiry:
+            read_employer_inquiry: Přečíst employer inquiry
+            said: řekl
+            mark_as_spam: Označit jako spam
+            mark_as_ham: Označit jako přečtené
+          submenu:
+            inbox: Inbox
+            spam: Spam
+            update_notified: Upravit seznam notifikovaných
+            edit_confirmation_email: Upravit potvrzovací e-mail
+          index:
+            no_employer_inquiries: Zatím jste neobdrželi žádné employer inquiries.
+          spam:
+            no_spam: Hurá! Nemáte žádný spam.
+          show:
+            details: Podrobnosti
+            age: Věk
+            actions: Akce
+            back_to_all_employer_inquiries: Zpět na všechny employer inquiries
+            spam: Spam
+            spam_yes: 'ano'
+            employer_inquiry: Employer Inquiry
+            to: Komu
+            from: Od
+            click_to_email: Klikněte pro odeslání této adresy e-mailem
+            phone: Telefon
+            date: Datum
+            message: Zpráva
+        settings:
+          notification_recipients_form:
+            settings_value_name: Zaslat upozornění pro
+            explanation: Pokaždé, když Vás někdo kontaktuje přes vaše webové stránky, Refinery odešle e-mail s upozorněním na nový employer inquiry.
+            hint: Když je odeslán nový employer inquiry, Refinery pošle upozornení na Váš e-mail.
+            example: "Zadejte e-mailové adresy jako: jack@work.com, jill@office.com"
+          confirmation_email_form:
+            to: Komu
+            from: Od
+            subject: Předmet
+            click_to_edit_subject: Klikněte zde pro editaci předmetu
+            explanation: Když Vás někdo kontaktuje přes vaše webové stránky, Refinery odešle e-mail s potvrzením o přijetí odesílateli employer inquiry.
+            below_edit_email_sent: Níže můžete upravit e-mail, který je odeslán.
+            the_customer_making_employer_inquiry: Klient delá employer inquiry
+            message: Zpráva
+            note: "Poznámka: umístěte text %name%, pro určení pozice jména klienta v e-maile"
+      mailer:
+        notification:
+          greeting: Hi there
+          you_recieved_new_employer_inquiry: You just received a new employer inquiry on your website.
+          employer_inquiry_starts: --- employer inquiry starts ---
+          employer_inquiry_ends: --- employer inquiry ends ---
+          from: Od
+          email: E-mail
+          phone: Telefon
+          message: Zpráva
+          closing_line: S pozdravem
+          ps_html: P.S. Všechny vaše employer inquiries jsou uloženy pod záložkou "Employer Inquiries" v Refinery, pokud by jste je chtěli zobrazit pozdeji.
+  activerecord:
+    models:
+      employer_inquiry: Employer Inquiry
+    attributes:
+      employer_inquiry:
+        company_name: Company name
+        contact_name: Contact name
+        phone: Phone
+        email: Email
+        grow_facility_address: Grow facility address
+        website: Website
+        positions_to_fill: Positions to fill
+        job_types: Job types
+        other_job_types: Other job types
+        any_chemicals: Any chemicals
+        tools: Tools
+        help_with_tools: Help with tools

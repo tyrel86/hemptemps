@@ -47,6 +47,62 @@ form.bp {
   @include blueprint-scaffolding;
 }
 
+form {
+	width: 70%;
+	margin: auto;
+	background-color: #003300;
+	color: white;
+	font-size: 15px;
+	padding: 20px;
+	.actions {
+		clear: both;
+	}
+	.section {
+		display: none;
+	}
+	.header {
+		font-size: 30px;
+		background-color: #57A700;
+		width: 100%;
+		font-weight: bolder;
+		padding: 20px;
+		position: relative;
+		top: -20px;
+		left: -20px;
+		.icon {
+			width: 28px;
+			height: 28px;
+			float: right;
+			margin-right: 10px;
+			margin-top: 5px;
+			background-image: url(/assets/bullet-point.png);
+			background-repeat: no-repeat;
+		}
+	}
+	label {
+		display: block;
+		clear: both;
+	}
+	input {
+	}
+	.radio_field {
+		label {
+			float: left;
+			clear: none;
+			.heading {
+				clear: both;
+				font-style: bold;
+			}
+		}
+		input {
+			float: left;
+		}
+	}
+	.multi_select {
+		float: left;
+	}
+}
+
 #header {
 	position: relative;
 	background-color: #2A431D;

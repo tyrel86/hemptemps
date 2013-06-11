@@ -1,0 +1,16 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%= link_to employer_inquiry.name, refinery.employer_inquiries_admin_employer_inquiry_path(employer_inquiry) %> <%= t('.said') %>
+    <span class="preview"><%= truncate(strip_tags(sanitize(employer_inquiry.message)), :length => 60) -%></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('delete.png'), refinery.employer_inquiries_admin_employer_inquiry_path(employer_inquiry),
+                :class => "cancel confirm-delete",
+                :title => t('admin.employer_inquiries.delete'),
+                :'data-confirm' => t('shared.admin.delete.message', :title => employer_inquiry.name),
+                :'data-method' => "delete" -%>
+
+    <%= link_to refinery_icon_tag('zoom.png'), refinery.employer_inquiries_admin_employer_inquiry_path(employer_inquiry),
+                :title => t('.read_employer_inquiry') -%>
+  </span>
+</li>

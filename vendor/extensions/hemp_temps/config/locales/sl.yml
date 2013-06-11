@@ -1,0 +1,100 @@
+sl:
+  refinery:
+    plugins:
+      hemp_temps:
+        title: Hemp Temps
+    hemp_temps:
+      hemp_temps:
+        new:
+          header_message: "Ups prišlo je do majhnega problema"
+          message: "Prosimo odpravite sledeče napake:"
+          send: Pošlji sporočilo
+          privacy_policy: "Cenimo vašo zasebnost"
+      admin:
+        hemp_temps:
+          hemp_temp:
+            said: pravi
+            move_hemp_temp_to_closed: Premakni povpraševanje v zaprto
+            move_hemp_temp_to_open: Premakni povpraševanje v odprto
+            read_hemp_temp: Preberi povpraševanje
+            remove_hemp_temp: "Ali ste prepričani da želite odstraniti povpraševanje od '%{name}'?"
+            title: Hemp Temps
+          toggle_status:
+            closed: "Povpraševanje '%{hemp_temp}' je zaprto"
+            reopened: "Povpraševanje '%{hemp_temp}' je ponovno odprto"
+          index:
+            no_hemp_temps: Trenutno še ni nobenega povpraševanja.
+          submenu:
+            update_notified: Uredi prejemnike obvestila
+            edit_confirmation_email: Uredni potrditveni email
+          show:
+            details: Podrobnosti
+            click_to_email: Pošlji email sporočilo
+            status: Status
+            open: Odprto
+            closed: Zaprto
+            age: Starost
+            actions: Možnosti
+            back_to_all_hemp_temps: Nazaj na vsa povpraševanja
+            hemp_temp: Hemp Temp
+        settings:
+          update:
+            updated: "'%{setting}' je bila uspešno posodobljena."
+          notification_recipients_form:
+            settings_value_name: Pošlji obvestilo na
+            explanation: "Vedno ko vas nekdo kontaktira na vaši spletni strani, vam Refinery pošlje email obvestilo o novem povpraševanju."
+            hint: "V zgornje polje vnesite email naslov. Želite da obvestila prejme več oseb? Vnesite več email naslovov ločenih z vejicami."
+            example: "Primer: jaz@domena.com, prijatelj@msn.com, sodelavec@work.com"
+          confirmation_email_form:
+            to: Za
+            from: Od
+            subject: Zadeva
+            click_to_edit_subject: Uredi zadevo
+            explanation: "Vedno ko vas nekdo kontaktira na vaši spletni strani mu Refinery pošlje email obvestilo o prejetem povpraševanju."
+            below_edit_email_sent: Spodaj lahko uredite vsebino email sporočila.
+            the_customer_making_hemp_temp: Stranka, ki je poslala povpraševanje
+            message: Sporočilo
+            note: "Opomba: vstavite tekst %name% kjer želite, da se pojavi ime stranke v email sporočilu."
+          subject_form:
+            subject_value_name: Zadeva
+  activerecord:
+    models:
+      hemp_temp: Hemp Temp
+    attributes:
+      hemp_temp:
+        name: Name
+        phone: Phone
+        email: Email
+        address: Address
+        badged: Badged
+        license_number: License number
+        exp_date: Exp date
+        job_type: Job type
+        bud_tender_experience: Bud tender experience
+        bud_tender_years: Bud tender years
+        bud_tender_strains: Bud tender strains
+        bud_tender_edibles: Bud tender edibles
+        bud_tender_extracts: Bud tender extracts
+        bud_tender_clones: Bud tender clones
+        bud_tender_register: Bud tender register
+        bud_tender_ailments: Bud tender ailments
+        grower_experience: Grower experience
+        grower_years: Grower years
+        grower_fifty_pounds: Grower fifty pounds
+        grower_hydro_orgainics: Grower hydro orgainics
+        grower_organics: Grower organics
+        grower_lighting: Grower lighting
+        grower_enjoyment: Grower enjoyment
+        grower_nutrient_lines: Grower nutrient lines
+        grower_methods: Grower methods
+        grower_largest_grow_room: Grower largest grow room
+        grower_media: Grower media
+        grower_environmental_controll: Grower environmental controll
+        grower_environmental_brands: Grower environmental brands
+        reception_experience: Reception experience
+        reception_software: Reception software
+        reception_badged: Reception badged
+        reception_work_history: Reception work history
+        trimmer_experience: Trimmer experience
+        trimmer_years: Trimmer years
+        trimmer_grams_per_day: Trimmer grams per day

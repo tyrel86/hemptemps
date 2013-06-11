@@ -1,0 +1,111 @@
+zh-CN:
+  refinery:
+    plugins:
+      hemp_temps:
+        title: Hemp Temps
+        description: 提供联系方式表格来存放 hemp temps
+    hemp_temps:
+      hemp_temps:
+        new:
+          send: 发送邮件
+          privacy_policy: 我们重视您的隐私
+      admin:
+        hemp_temps:
+          delete: 永久删除 hemp temp
+          hemp_temp:
+            read_hemp_temp: 阅读这个 hemp temp
+            said: 说
+            mark_as_spam: 标记为垃圾邮件
+            mark_as_ham:  移动到收件箱
+          submenu:
+            inbox: 收件箱
+            spam: 垃圾邮件
+            update_notified: 通知相关人员
+            edit_confirmation_email: 编辑确认邮件
+          index:
+            no_hemp_temps: 您尚未收到任何 hemp temps
+          spam:
+            no_spam: 太棒了！一封垃圾邮件都没有～
+          show:
+            details: 详细
+            age: 岁
+            actions: 操作
+            back_to_all_hemp_temps: 返回到全部 hemp temps
+            spam: 垃圾信息
+            spam_yes: 是
+            hemp_temp: Hemp Temp
+            to: 收件人(To)
+            from: 发件人(From)
+            click_to_email: 点击来发送
+            phone: 电话
+            date: 日期
+            message: 信息
+        settings:
+          notification_recipients_form:
+            settings_value_name: 发通知给
+            explanation: 每当有人联系您时， Refinery都会发邮件给您.
+            hint: 当有新的 hemp temp 被提交时， Refinery 会发邮件告知您。
+            example: "输入您的Email地址, 形如： jack@work.com, jill@office.com"
+          confirmation_email_form:
+            to: 收件人
+            from: 发件人
+            subject: 主题
+            click_to_edit_subject: 点击编辑主题
+            explanation: 当有人试图联系您时，Refinery 都会发邮件跟他（拥有hemp temp 的人）进行确认
+            below_edit_email_sent: 您可以在下面编辑邮件内容
+            the_customer_making_hemp_temp:  建立 hemp temp 的顾客
+            message: 邮件
+            note: "提示: 您可以在希望出现对方姓名的地方，使用%name%"
+      mailer:
+        notification:
+          greeting: 你好
+          you_recieved_new_hemp_temp: 您刚刚收到了一封新 hemp temp.
+          hemp_temp_starts: --- hemp temp 开始---
+          hemp_temp_ends: --- hemp temp 结束---
+          from: 发件人
+          email: Email
+          phone: 电话
+          message: 正文
+          closing_line: 此致，
+          ps_html:  注：所有您的hemp temps都会保存在"Hemp Temps"里。这样您可以在任何时间查看它们。
+  activerecord:
+    models:
+      hemp_temp: Hemp Temp
+    attributes:
+      hemp_temp:
+        name: Name
+        phone: Phone
+        email: Email
+        address: Address
+        badged: Badged
+        license_number: License number
+        exp_date: Exp date
+        job_type: Job type
+        bud_tender_experience: Bud tender experience
+        bud_tender_years: Bud tender years
+        bud_tender_strains: Bud tender strains
+        bud_tender_edibles: Bud tender edibles
+        bud_tender_extracts: Bud tender extracts
+        bud_tender_clones: Bud tender clones
+        bud_tender_register: Bud tender register
+        bud_tender_ailments: Bud tender ailments
+        grower_experience: Grower experience
+        grower_years: Grower years
+        grower_fifty_pounds: Grower fifty pounds
+        grower_hydro_orgainics: Grower hydro orgainics
+        grower_organics: Grower organics
+        grower_lighting: Grower lighting
+        grower_enjoyment: Grower enjoyment
+        grower_nutrient_lines: Grower nutrient lines
+        grower_methods: Grower methods
+        grower_largest_grow_room: Grower largest grow room
+        grower_media: Grower media
+        grower_environmental_controll: Grower environmental controll
+        grower_environmental_brands: Grower environmental brands
+        reception_experience: Reception experience
+        reception_software: Reception software
+        reception_badged: Reception badged
+        reception_work_history: Reception work history
+        trimmer_experience: Trimmer experience
+        trimmer_years: Trimmer years
+        trimmer_grams_per_day: Trimmer grams per day

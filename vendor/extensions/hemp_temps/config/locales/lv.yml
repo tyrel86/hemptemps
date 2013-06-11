@@ -1,0 +1,110 @@
+lv:
+  refinery:
+    plugins:
+      hemp_temps:
+        title: Hemp Temps
+    hemp_temps:
+      hemp_temps:
+        new:
+          send: Sūtīt ziņu
+          privacy_policy: Mēs cienam Jūsu privātumu
+      admin:
+        hemp_temps:
+          delete: Dzēst šo pieprasījumu
+          hemp_temp:
+            read_hemp_temp: Lasīt pieprasījumu
+            said: sacīja
+            mark_as_spam: Atzīmēt kā spamu
+            mark_as_ham: Pārvietot uz ienākošajiem
+          submenu:
+            inbox: Ienākošie
+            spam: Spams
+            update_notified: Atjaunot paziņojumu saņēmēju
+            edit_confirmation_email: Labot apstiprinājuma epastu
+          index:
+            no_hemp_temps: Nav saņemts neviens pieprasījums.
+          spam:
+            no_spam: Urā! Jums nav neviens pieprasījums, kas būtu spams.
+          show:
+            details: Detaļas
+            age: Vecums
+            actions: Darbības
+            back_to_all_hemp_temps: Atgriezties pie visiem pieprasījumiem
+            spam: Spams
+            spam_yes: jā
+            hemp_temp: Hemp Temp
+            to: Kam
+            from: 'No'
+            click_to_email: Click to email this address
+            phone: Tālrunis
+            date: Datums
+            message: Ziņa
+        settings:
+          notification_recipients_form:
+            settings_value_name: Sūtīt paziņojumu uz
+            explanation: Katru reizi, kad kāds ar tevi sazinās izmantojot kontaktformu, Refinery nosūta epastu par to, ka ir jauns pieprasījums.
+            hint: Kad tiek iesniegts jauns pieprasījums, tad Refinery nosūtīs paziņojumu uz šo epastu.
+            example: "Ievadi savu epasta(-u) adresi(-es) šādā formātā: janis.ozols@test.lv, juris@test.lv"
+          confirmation_email_form:
+            to: Saņēmējs
+            from: Adresāts
+            subject: Tēma
+            click_to_edit_subject: Spied šeit, lai labotu tēmu
+            explanation: Katru reizi, kad kāds sazinās ar tevi izmantojot kontakformu Refinery nosūta apstiprinājuma epastu personai, kura iesniegusi pieprasījumu.
+            below_edit_email_sent: Zemāk vari labot epasta saturu, kas tiek izsūtīts.
+            the_customer_making_hemp_temp: Klients, kurš izveidoja pieprasījumu
+            message: Ziņa
+            note: "Piezīme: ievieto šo tektstu %name% tur, kur tu epastā vēlies norādīt klienta vārdu"
+      mailer:
+        notification:
+          greeting: Sveicināts(-a)
+          you_recieved_new_hemp_temp: Jūs nupat saņēmāt jaunu piperasījumu Jūsu saitā.
+          hemp_temp_starts: --- pieprasījuma sākums ---
+          hemp_temp_ends: --- pieprasījuma beigas ---
+          from: 'No'
+          email: Epasts
+          phone: Tālrunis
+          message: Ziņa
+          closing_line: Ar cieņu
+          ps_html: P.S. Ja vēlaties skatīt šo un citus pieprasījumus vēlāk, tad tos var atrast zem sadaļas "Pieprasījumi".
+  activerecord:
+    models:
+      hemp_temp: Hemp Temp
+    attributes:
+      hemp_temp:
+        name: Name
+        phone: Phone
+        email: Email
+        address: Address
+        badged: Badged
+        license_number: License number
+        exp_date: Exp date
+        job_type: Job type
+        bud_tender_experience: Bud tender experience
+        bud_tender_years: Bud tender years
+        bud_tender_strains: Bud tender strains
+        bud_tender_edibles: Bud tender edibles
+        bud_tender_extracts: Bud tender extracts
+        bud_tender_clones: Bud tender clones
+        bud_tender_register: Bud tender register
+        bud_tender_ailments: Bud tender ailments
+        grower_experience: Grower experience
+        grower_years: Grower years
+        grower_fifty_pounds: Grower fifty pounds
+        grower_hydro_orgainics: Grower hydro orgainics
+        grower_organics: Grower organics
+        grower_lighting: Grower lighting
+        grower_enjoyment: Grower enjoyment
+        grower_nutrient_lines: Grower nutrient lines
+        grower_methods: Grower methods
+        grower_largest_grow_room: Grower largest grow room
+        grower_media: Grower media
+        grower_environmental_controll: Grower environmental controll
+        grower_environmental_brands: Grower environmental brands
+        reception_experience: Reception experience
+        reception_software: Reception software
+        reception_badged: Reception badged
+        reception_work_history: Reception work history
+        trimmer_experience: Trimmer experience
+        trimmer_years: Trimmer years
+        trimmer_grams_per_day: Trimmer grams per day

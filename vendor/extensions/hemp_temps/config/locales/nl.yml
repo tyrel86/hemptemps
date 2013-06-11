@@ -1,0 +1,78 @@
+nl:
+  refinery:
+    plugins:
+      hemp_temps:
+        title: Hemp Temps
+    hemp_temps:
+      hemp_temps:
+        new:
+          send: Verstuur uw vraag
+          privacy_policy: Wij respecteren uw privacy
+      admin:
+        hemp_temps:
+          delete: Verwijder deze vraag voorgoed
+          hemp_temp:
+            read_hemp_temp: Lees de vraag
+            said: zei
+            mark_as_spam: Markeer als spam
+            mark_as_ham: Verplaats naar de inbox
+          submenu:
+            inbox: Inbox
+            spam: Spam
+            update_notified: Wijzig wie op de hoogte wordt gesteld van vragen
+            edit_confirmation_email: Bewerk bevestigings email
+          index:
+            no_hemp_temps: Je hebt nog geen vragen ontvangen.
+          spam:
+            no_spam: Jeej! Je hebt geen spam.
+          show:
+            details: Details
+            age: Leeftijd
+            actions: Acties
+            back_to_all_hemp_temps: Terug naar alle vragen
+            spam: Spam
+            spam_yes: ja
+            hemp_temp: Hemp Temp
+            to: Aan
+            from: Van
+            click_to_email: Klik hier om een e-mail te sturen
+            phone: Telefoonnummer
+            date: Datum
+            message: Bericht
+        settings:
+          notification_recipients_form:
+            settings_value_name: Stuur notificaties naar
+            explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email waarin staat dat er een nieuwe vraag ontvangen is."
+            hint: "Vul hierboven een email adres in. Wilt u naar meerdere adressen notificaties sturen? Vul dan meerdere email adressen in gescheiden door comma's"
+            example: "Bijvoorbeeld: ik@domein.com, vrienden@msn.com, collegas@werk.com"
+          confirmation_email_form:
+            to: Aan
+            from: Van
+            subject: Onderwerp
+            click_to_edit_subject: Klik hier om het onderwerp bewerken
+            explanation: "Iedere keer wanneer iemand het vraag formulier invult op uw website, stuurt Refinery een email naar die persoon waarin staat dat de vraag ontvangen is."
+            below_edit_email_sent: Hieronder kun je de email die verzonden wordt bewerken.
+            the_customer_making_hemp_temp: De persoon die de heeft vraag gesteld
+            message: Bericht
+            note: "Notitie: plaats de tekst %name% overal in je email waar je de naam van de vragende persoon wilt invoegen"
+      mailer:
+        notification:
+          greeting: Hallo
+          you_recieved_new_hemp_temp: Je hebt een nieuwe vraag via de website ontvangen.
+          hemp_temp_starts: --- begin van de vraag---
+          hemp_temp_ends: --- einde van de vraag---
+          from: Van
+          email: Email
+          phone: Telefoon
+          message: Bericht
+          closing_line: Vriendelijke groeten,
+          ps_html: P.S. Alle vragen woren opgeslagen in de "vragen" sectie van uw website.All your hemp temps are stored in the "Hemp Temps" section of Refinery.
+  activerecord:
+    models:
+      hemp_temp: Hemp Temp
+    attributes:
+      hemp_temp:
+        name: Naam
+        email: 'Email'
+        phone: Telefoon
+        message: Bericht

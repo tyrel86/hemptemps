@@ -1,0 +1,23 @@
+<% if searching? %>
+  <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
+  <% if @hemp_temps.any? %>
+    <ul>
+      <%= render :partial => 'hemp_temp', :collection => @hemp_temps %>
+    </ul>
+  <% else %>
+    <p><%= t('shared.admin.search.no_results') %></p>
+  <% end %>
+<% else %>
+  <% if @grouped_hemp_temps.any? -%>
+    <% @grouped_hemp_temps.each do |container| %>
+      <h3><%= l((hemp_temp_group = container.last).first.created_at, :format => :short) %></h3>
+      <ul>
+        <%= render :partial => 'hemp_temp', :collection => hemp_temp_group %>
+      </ul>
+    <% end %>
+  <% else -%>
+    <p>
+      <strong><%= t('no_hemp_temps', :scope => 'refinery.hemp_temps.admin.hemp_temps.index') %></strong>
+    </p>
+  <% end -%>
+<% end %>

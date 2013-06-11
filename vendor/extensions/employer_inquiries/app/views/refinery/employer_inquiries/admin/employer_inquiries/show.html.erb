@@ -1,0 +1,166 @@
+<div id='records'>
+  <h2><%= t('.employer_inquiry') %></h2>
+  <table id='employer_inquiry' class='inquiry'>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.company_name', :default => t('activerecord.attributes.employer_inquiry.company_name')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.company_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.contact_name', :default => t('activerecord.attributes.employer_inquiry.contact_name')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.contact_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.phone', :default => t('activerecord.attributes.employer_inquiry.phone')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.phone %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.email', :default => t('activerecord.attributes.employer_inquiry.email')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.email %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.grow_facility_address', :default => t('activerecord.attributes.employer_inquiry.grow_facility_address')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.grow_facility_address %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            Safe Environment?
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.safe ? "Yes" : "No" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.website', :default => t('activerecord.attributes.employer_inquiry.website')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.website %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.positions_to_fill', :default => t('activerecord.attributes.employer_inquiry.positions_to_fill')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.positions_to_fill %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.job_types', :default => t('activerecord.attributes.employer_inquiry.job_types')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.job_types.gsub(/-{2,}/,"") %>
+        </td>
+      </tr>
+      <tr>
+        <td valign='top'>
+          <strong>
+            <%= t('.other_job_types', :default => t('activerecord.attributes.employer_inquiry.other_job_types')) %>
+          </strong>
+        </td>
+        <td>
+          <p style='margin-top: 0px'>
+            <% @employer_inquiry.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+              <%=raw "</p><p>" unless index == 0 %>
+              <%= sentence %>
+            <% end %>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.any_chemicals', :default => t('activerecord.attributes.employer_inquiry.any_chemicals')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.any_chemicals ? "Yes" : "No" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>
+            <%= t('.tools', :default => t('activerecord.attributes.employer_inquiry.tools')) %>
+          </strong>
+        </td>
+        <td>
+          <%= @employer_inquiry.tools ? "Yes" : "No" %>
+        </td>
+      </tr>
+      <tr>
+        <td valign='top'>
+          <strong>
+            <%= t('.help_with_tools', :default => t('activerecord.attributes.employer_inquiry.help_with_tools')) %>
+          </strong>
+        </td>
+        <td>
+          <p style='margin-top: 0px'>
+            <% @employer_inquiry.message.to_s.gsub("\r\n\r\n", "\r\n").split("\r\n").each_with_index do |sentence, index| %>
+              <%=raw "</p><p>" unless index == 0 %>
+              <%= sentence %>
+            <% end %>
+          </p>
+        </td>
+      </tr>
+  </table>
+</div>
+<div id='actions'>
+  <h2><%= t('.details')%></h2>
+  <p>
+    <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@employer_inquiry.created_at) %>
+  </p>
+  <h2><%= t('.actions') %></h2>
+  <ul>
+    <li>
+      <%= link_to t('.back_to_all_employer_inquiries'), refinery.url_for(:action => 'index'),
+                   :class => "back_icon" %>
+    </li>
+    <li>
+      <%= link_to t('delete', :scope => 'refinery.employer_inquiries.admin.employer_inquiries'),
+                  refinery.employer_inquiries_admin_employer_inquiry_path(@employer_inquiry),
+                  :class => 'delete_icon no-tooltip confirm-delete',
+                  :title => t('delete', :scope => 'refinery.employer_inquiries.admin.employer_inquiries'),
+                  :'data-confirm' => t('message', :scope => 'refinery.admin.delete', :title => @employer_inquiry.name),
+                  :'data-method' => "delete" %>
+    </li>
+  </ul>
+</div>

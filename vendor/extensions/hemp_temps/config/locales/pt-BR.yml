@@ -1,0 +1,111 @@
+pt-BR:
+  refinery:
+    plugins:
+      hemp_temps:
+        title: Hemp Temps
+        description: Gerenciar contatos
+    hemp_temps:
+      hemp_temps:
+        new:
+          send: Enviar mensagem
+          privacy_policy: "Nós valorizamos sua privacidade"
+      admin:
+        hemp_temps:
+          delete: Remover esta mensagem para sempre
+          hemp_temp:
+            read_hemp_temp: Ler a mensagem
+            said: disse
+            mark_as_spam: Marcar como spam
+            mark_as_ham: Marcar como segura
+          submenu:
+            inbox: Caixa de Entrada
+            spam: Spam
+            update_notified: Atualizar quem recebe a notificação
+            edit_confirmation_email: Editar email de confirmação
+          index:
+            no_hemp_temps: "Não exitem mensagens."
+          spam:
+            no_spam: Não existem mensagens de spam.
+          show:
+            details: Detalhes
+            age: Quando
+            actions: Ações
+            back_to_all_hemp_temps: Voltar para todas as Mensagens
+            spam: Spam
+            spam_yes: 'sim'
+            hemp_temp: Hemp Temp
+            to: Para
+            from: De
+            click_to_email: Clique para enviar email
+            phone: Telefone
+            date: Data
+            message: Mensagem
+        settings:
+          notification_recipients_form:
+            settings_value_name: Enviar notificações para
+            explanation: "Toda vez que alguém contactar você no seu website, enviamos um email para notificar a essa pessoa o recebimento de uma mensagem."
+            hint: "Digite um endereço de email acima. Deseja que a notificação vá para mais de uma pessoa? Digite vários endereços de email separados por vírgulas."
+            example: "Digite os endereços da seguinte forma: eu@dominio.com, amigo@msn.com, colegadetrabalho@trabalho.com"
+          confirmation_email_form:
+            to: Para
+            from: De
+            subject: Assunto
+            click_to_edit_subject: Clique aqui para editar o assunto
+            explanation: "Toda vez que alguém contatar você no seu website, enviamos um email para confirmar o recebimento da mensagem para esta pessoa."
+            below_edit_email_sent: Abaixo você pode editar o texto a ser enviado no e-mail.
+            the_customer_making_hemp_temp: O cliente fazendo o contato
+            message: Mensagem
+            note: "Nota: posicione o texto %name% onde você desejar que o nome do cliente apareça no email."
+      mailer:
+        notification:
+          greeting: Olá
+          you_recieved_new_hemp_temp: Você recebeu um novo contato pelo website.
+          hemp_temp_starts: --- começo da mensagem ---
+          hemp_temp_ends: --- fim da mensagem ---
+          from: De
+          email: Email
+          phone: Telefone
+          message: Mensagem
+          closing_line: Atenciosamente
+          ps_html: OBS. Todos os contatos são armazenados na seção "Contatos" do website.
+  activerecord:
+    models:
+      hemp_temp: Hemp Temp
+    attributes:
+      hemp_temp:
+        name: Name
+        phone: Phone
+        email: Email
+        address: Address
+        badged: Badged
+        license_number: License number
+        exp_date: Exp date
+        job_type: Job type
+        bud_tender_experience: Bud tender experience
+        bud_tender_years: Bud tender years
+        bud_tender_strains: Bud tender strains
+        bud_tender_edibles: Bud tender edibles
+        bud_tender_extracts: Bud tender extracts
+        bud_tender_clones: Bud tender clones
+        bud_tender_register: Bud tender register
+        bud_tender_ailments: Bud tender ailments
+        grower_experience: Grower experience
+        grower_years: Grower years
+        grower_fifty_pounds: Grower fifty pounds
+        grower_hydro_orgainics: Grower hydro orgainics
+        grower_organics: Grower organics
+        grower_lighting: Grower lighting
+        grower_enjoyment: Grower enjoyment
+        grower_nutrient_lines: Grower nutrient lines
+        grower_methods: Grower methods
+        grower_largest_grow_room: Grower largest grow room
+        grower_media: Grower media
+        grower_environmental_controll: Grower environmental controll
+        grower_environmental_brands: Grower environmental brands
+        reception_experience: Reception experience
+        reception_software: Reception software
+        reception_badged: Reception badged
+        reception_work_history: Reception work history
+        trimmer_experience: Trimmer experience
+        trimmer_years: Trimmer years
+        trimmer_grams_per_day: Trimmer grams per day

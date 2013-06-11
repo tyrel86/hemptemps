@@ -6,3 +6,21 @@ jQuery ->
 
 	#Activate Hover menus
 	$('#sti-menu').iconmenu()
+
+	$("nav#menu").css('width','990px')
+
+	$("input[name='hemp_temp[job_type]']").change( ->
+		$("form .section").css('display','none')
+		show_id = $(this).attr('id')
+		$("form .section#" + show_id).css('display','block')
+	)
+
+	sugest_badge = ->
+		alert("You must have a badge to work in the MMJ industry. Please see http://www.colorado.gov/cs/Satellite/Rev-MMJ/CBON/1251592985101 for instructions and return here when you are eligble")
+
+	$("#hemp_temp_badged").change( ->
+		unless $(this).val() == true
+			sugest_badge()
+	)
+
+	
