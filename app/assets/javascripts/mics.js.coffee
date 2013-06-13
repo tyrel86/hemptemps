@@ -15,12 +15,10 @@ jQuery ->
 		$("form .section#" + show_id).css('display','block')
 	)
 
-	sugest_badge = ->
-		alert("You must have a badge to work in the MMJ industry. Please see http://www.colorado.gov/cs/Satellite/Rev-MMJ/CBON/1251592985101 for instructions and return here when you are eligble")
-
 	$("#hemp_temp_badged").change( ->
-		unless $(this).val() == true
-			sugest_badge()
+		badged = $(this).val()
+		unless badged
+			alert("You must have a badge to work in the MMJ industry. Please see http://www.colorado.gov/cs/Satellite/Rev-MMJ/CBON/1251592985101 for instructions and return here when you are eligble")
 	)
 
 	

@@ -14,6 +14,7 @@ module Refinery
       validates :name, :presence => true
       validates :phone, :presence => true
 			validates :badged, acceptance: { accept: true }
+      validates :license_number, :presence => true
 
       JOB_TYPES = ["Bud Tender", "Grower", "Reception/Front Desk", "Trimming"]
     end
